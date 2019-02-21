@@ -8,7 +8,7 @@
 <!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
 <!ENTITY vmToolsVersion "10.3.5">
 ]>
-<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.5.3" support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6" support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
 
 <CHANGES>
 ##&name;
