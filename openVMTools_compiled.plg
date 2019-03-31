@@ -2,11 +2,12 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "OpenVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2019.02.26">
+<!ENTITY version "2019.03.31">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
+<!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
-<!ENTITY vmToolsVersion "10.3.5">
+
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6" support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
 
@@ -14,13 +15,63 @@
 ##&name;
 
 ###&version;
-- VMWare Tools 1.3.5
 - Pre-compiled, only needs two packages.
 
 
 </CHANGES>
- 
- 
+
+<!-- The 'pre-install' script. -->
+  <FILE Run="/bin/bash">
+    <INLINE>
+KERNEL=`uname -r`
+echo ""
+echo "Kernel Version: $KERNEL"
+echo ""
+echo ""
+
+if 	[ $KERNEL = "4.18.20-unRAID" ]; then		
+		OVTNAME=open_vm_tools-10.3.5-4.18.20-unRAID-x86_64.tgz
+	elif [ $KERNEL = "4.19.16-unRAID" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.16-unRAID-x86_64.tgz
+	elif [ $KERNEL = "4.19.17-unRAID" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.17-unRAID-x86_64.tgz
+	elif [ $KERNEL = "4.19.20-unRAID" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.20-unRAID-x86_64.tgz
+	elif [ $KERNEL = "4.19.23-unRAID" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.23-unRAID-x86_64.tgz
+	elif [ $KERNEL = "4.19.24-unRAID" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.24-unRAID-x86_64.tgz
+	elif [ $KERNEL = "4.19.32-unRAID" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.32-unRAID-x86_64.tgz		
+	else
+		echo ""
+		echo ""
+		echo "--------------------------------------------------------------------------"
+		echo ""
+		echo "   Sorry, OpenVMTools has not yet been compiled for your unRAID version."
+		echo ""
+		echo "--------------------------------------------------------------------------"
+		echo ""
+		echo ""
+		exit 1
+		
+	fi
+	
+OVTPKG=&source;/$OVTNAME
+OVTURL=&repo;/$OVTNAME
+
+mkdir -p &source;
+
+if [ ! -f &source;/$OVTNAME ]; then
+	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O &source;/$OVTNAME
+	fi
+
+	
+</INLINE>
+  </FILE>
+
+<!-- The dependency files. -->
+
 <FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
 <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
 </FILE>
@@ -30,19 +81,11 @@
 </FILE>
  
  
- <FILE Run="/bin/bash">
- <INLINE>
+<!-- The 'post-install' script -->
+  <FILE Run="/bin/bash">
+    <INLINE>
 KERNEL=`uname -r`
-OVTPKG=&source;/open_vm_tools-&vmToolsVersion;-$KERNEL-x86_64.tgz 
-OVTURL=&repo;/open_vm_tools-&vmToolsVersion;-$KERNEL-x86_64.tgz
-OVTNAME=open_vm_tools-&vmToolsVersion;-$KERNEL-x86_64.tgz
-
-mkdir -p &source;
-
-if [ ! -f &source;/$OVTNAME ]; then
-	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O &source;/$OVTNAME
-	fi
-
+OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)
 upgradepkg --install-new $OVTPKG
 
 echo -e "Starting VMWare Tools Daemon."
@@ -50,18 +93,38 @@ killall vmtoolsd 2> /dev/null
 rm /var/run/vmtoolsd.pid 2> /dev/null
 /usr/local/bin/vmtoolsd -b /var/run/vmtoolsd.pid
 
- 
+
+echo ""
 echo ""
 echo "-----------------------------------------------------------"
 echo " Plugin &name; is installed."
 echo " Plugin Version: &version;"
-echo " VMWare Tools Version: &vmToolsVersion;"
+echo "-----------------------------------------------------------"
+echo ""
+echo ""
+
+</INLINE>
+  </FILE>
+ 
+ 
+ <!-- The 'remove' script. -->
+ 
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
+echo -e "Stopping VMWare Tools Daemon."
+killall vmtoolsd 2> /dev/null
+KERNEL=`uname -r`
+removepkg $OVTPKG
+rm -rf &plugdir;
+rm -rf &source;
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been removed."
+echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
 </INLINE>
- </FILE>
-
-  <!-- REMOVE SCRIPT -->
-
+  </FILE>
 
 </PLUGIN>
