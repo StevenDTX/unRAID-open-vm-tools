@@ -30,15 +30,15 @@ echo ""
 echo ""
 
 if 	[ $KERNEL = "4.18.20-unRAID" ]; then		
-		OVTNAME=open_vm_tools-10.3.5-4.18.20-unRAID-x86_64.tgz
+		OVTNAME=open_vm_tools-10.3.5-4.18.20-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.16-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.16-unRAID-x86_64.tgz
+		OVTNAME=open_vm_tools-10.3.5-4.19.16-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.17-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.17-unRAID-x86_64.tgz
+		OVTNAME=open_vm_tools-10.3.5-4.19.17-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.20-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.20-unRAID-x86_64.tgz
+		OVTNAME=open_vm_tools-10.3.5-4.19.20-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.23-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.23-unRAID-x86_64.tgz
+		OVTNAME=open_vm_tools-10.3.5-4.19.23-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.31-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.5-4.19.31-Unraid-x86_64.tgz
 	else
