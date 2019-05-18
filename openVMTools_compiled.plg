@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "OpenVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2019.05.16">
+<!ENTITY version "2019.05.17">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -48,6 +48,8 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-10.3.10-4.19.37-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.41-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-4.19.41-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.43-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.43-Unraid-x86_64.tgz
 	else
 		echo ""
 		echo ""
