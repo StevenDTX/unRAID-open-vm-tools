@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE PLUGIN [
-<!ENTITY name "OpenVMTools_compiled">
+<!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
 <!ENTITY version "2019.08.09">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
