@@ -81,6 +81,8 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-11.0.1-5.3.8-Unraid-x86_64.tgz
 	elif [ $KERNEL = "5.3.11-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.0.1-5.3.11-Unraid-x86_64.tgz
+	elif [ $KERNEL = "5.3.12-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-5.3.12-Unraid-x86_64.tgz
 	else
 		echo ""
 		echo ""
