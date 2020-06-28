@@ -14,6 +14,10 @@
 <CHANGES>
 ##&name;
 	
+###2020.06.28
+- Recompiled unRAID 6.8.3 to use VMWare Tools v11.1.0 with new "Settings" web page
+- Recompiled unRAID unRAID 6.9.0-beta22 to use VMWare Tools v11.1.0 with new "Settings" web page
+	
 ###2020.06.19
 - Updated for unRAID 6.9.0-beta22
 - VMWare Tools v11.1.0
@@ -122,7 +126,8 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 	elif [ $KERNEL = "4.19.98-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.0.5-4.19.98-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.107-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.5-4.19.107-Unraid-x86_64.tgz
+		OVTNAME=open_vm_tools-11.1.0-4.19.107-Unraid-x86_64.tgz
+	    
 	elif [ $KERNEL = "5.3.7-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.0.0-5.3.7-Unraid-x86_64.tgz
 	elif [ $KERNEL = "5.3.8-Unraid" ]; then
