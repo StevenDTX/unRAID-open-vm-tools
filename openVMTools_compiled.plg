@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2020.07.01">
+<!ENTITY version "2020.07.11">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,9 @@
 
 <CHANGES>
 ##&name;
+
+###2020.7.11
+- Reverted unRAID 6.9.0-beta24 to use VMWare Tools v10.3.10. Removed "Settings" page. The "ioctl" message only appears a few times upon install.
 	
 ###2020.7.01
 - Reverted unRAID 6.9.0-beta22 to use VMWare Tools v11.0.5
