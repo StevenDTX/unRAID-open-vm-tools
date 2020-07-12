@@ -185,11 +185,16 @@ if [ ! -f &source;/$OVTNAME ]; then
 <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
 </FILE>
 
-if [ ! -f /var/log/packages/libffi-* ]; then
-	<FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
+LIBFFIEXIST=$(ls /var/log/packages/libffi-*)
+if [ -z "$LIBFFIEXIST" ]
+then
+      echo "\$LIBFFIEXIST is already installed"
+else
+      	<FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
 	<URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
 	</FILE>
-	fi
+fi
+	
  
  
 <!-- The 'post-install' script -->
