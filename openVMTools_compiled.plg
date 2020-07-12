@@ -181,8 +181,8 @@ if [ ! -f &source;/$OVTNAME ]; then
 <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
 </FILE>
 
-<FILE Name="&source;/libffi-3.2.1-x86_64-2.txz" Run="upgradepkg --install-new">
-<URL>&repo;/libffi-3.2.1-x86_64-2.txz</URL>
+<FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
+<URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
 </FILE>
  
  
