@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2020.07.11">
+<!ENTITY version "2020.07.12">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,10 @@
 
 <CHANGES>
 ##&name;
+	
+###2020.7.12
+- Updated for unRAID 6.9.0-beta25.
+- Only install libffi if not already installed. I believe it comes pre-installed with unRAID.
 
 ###2020.7.11
 - Reverted unRAID 6.9.0-beta24 to use VMWare Tools v10.3.10. Removed "Settings" page. The "ioctl" message only appears a few times upon install.
@@ -181,9 +185,11 @@ if [ ! -f &source;/$OVTNAME ]; then
 <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
 </FILE>
 
-<FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
-<URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
-</FILE>
+if [ ! -f /var/log/packages/libffi-* ]; then
+	<FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
+	<URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
+	</FILE>
+	fi
  
  
 <!-- The 'post-install' script -->
