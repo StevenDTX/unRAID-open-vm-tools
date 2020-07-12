@@ -16,7 +16,7 @@
 	
 ###2020.7.12
 - Updated for unRAID 6.9.0-beta25.
-- Only install libffi if not already installed. I believe it comes pre-installed with unRAID.
+- Updated libffi to v3.3
 
 ###2020.7.11
 - Reverted unRAID 6.9.0-beta24 to use VMWare Tools v10.3.10. Removed "Settings" page. The "ioctl" message only appears a few times upon install.
