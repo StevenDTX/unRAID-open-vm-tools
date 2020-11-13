@@ -14,11 +14,14 @@
 <CHANGES>
 ##&name;
 	
+###2020.11.13
+- Updated for unRAID 6.9.0-beta35
+	
 ###2020.09.28
-- Updated for unRAID 6.9.0-beta29.
+- Updated for unRAID 6.9.0-beta29
 	
 ###2020.7.12
-- Updated for unRAID 6.9.0-beta25.
+- Updated for unRAID 6.9.0-beta25
 - Updated libffi to v3.3
 
 ###2020.7.11
@@ -159,6 +162,8 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.7.8-Unraid-x86_64-202007121525.tgz
 	elif [ $KERNEL = "5.8.12-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.8.12-Unraid-x86_64-202009282003.tgz
+	elif [ $KERNEL = "5.8.18-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.8.18-Unraid-x86_64-202011131509.tgz
 	else
 		echo ""
 		echo ""
