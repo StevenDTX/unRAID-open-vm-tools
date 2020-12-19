@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2020.12.10">
+<!ENTITY version "2020.12.19">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,9 @@
 
 <CHANGES>
 ##&name;
+	
+###2020.12.19
+- Updated for unRAID 6.9.0-rc2
 
 ###2020.12.10
 - Updated for unRAID 6.9.0-rc1
@@ -146,7 +149,8 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-11.0.5-4.19.98-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.107-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.1.0-4.19.107-Unraid-x86_64.tgz
-	    
+	
+	## 6.9-beta
 	elif [ $KERNEL = "5.3.7-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.0.0-5.3.7-Unraid-x86_64.tgz
 	elif [ $KERNEL = "5.3.8-Unraid" ]; then
@@ -167,9 +171,13 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.8.12-Unraid-x86_64-202009282003.tgz
 	elif [ $KERNEL = "5.8.18-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.8.18-Unraid-x86_64-202011131509.tgz
-	    
+
+	## 6.9-rc
 	elif [ $KERNEL = "5.9.13-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.9.13-Unraid-x86_64-202012101159.tgz
+	elif [ $KERNEL = "5.10.1-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.1-Unraid-x86_64-202012191115.tgz
+	    
 	else
 		echo ""
 		echo ""
