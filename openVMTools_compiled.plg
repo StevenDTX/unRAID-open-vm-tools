@@ -187,7 +187,7 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 	## 6.9.x
 	elif [ $KERNEL = "5.10.19-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.10.19-Unraid-x86_64-202103012031.tgz
-	elif [ $KERNEL = "5.10.21.Unraid" ]; then
+	elif [ $KERNEL = "5.10.21-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz
 	    
 	else
