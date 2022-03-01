@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2020.07.12">
+<!ENTITY version "2022.03.01">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -14,72 +14,131 @@
 <CHANGES>
 ##&name;
 	
+###2022.03.01
+- Recompiled 6.9.2 with VMWare Tools v11.3.5
+- Added status page under Settings
+	
+	
+###2021.11.07
+- Updated for unRAID 6.10.0-rc2
+- VMWare Tools v11.3.5
+	
+	
+###2021.04.10
+- Fixed typo
+	
+	
+###2021.04.07
+- Updated for unRAID 6.9.2
+	
+	
+###2021.03.09
+- Updated for unRAID 6.9.1
+	
+	
+###2021.03.02
+- Updated for unRAID 6.9.0
+
+	
+###2020.12.19
+- Updated for unRAID 6.9.0-rc2
+
+	
+###2020.12.10
+- Updated for unRAID 6.9.0-rc1
+	
+	
+###2020.11.13
+- Updated for unRAID 6.9.0-beta35
+	
+	
+###2020.09.28
+- Updated for unRAID 6.9.0-beta29
+	
+	
 ###2020.7.12
-- Updated for unRAID 6.9.0-beta25.
+- Updated for unRAID 6.9.0-beta25
 - Updated libffi to v3.3
 
+	
 ###2020.7.11
 - Reverted unRAID 6.9.0-beta24 to use VMWare Tools v10.3.10. Removed "Settings" page. The "ioctl" message only appears a few times upon install.
+	
 	
 ###2020.7.01
 - Reverted unRAID 6.9.0-beta22 to use VMWare Tools v11.0.5
 
+	
 ###2020.06.28
 - Recompiled unRAID 6.8.3 to use VMWare Tools v11.1.0 with new "Settings" web page
 - Recompiled unRAID 6.9.0-beta22 to use VMWare Tools v11.1.0 with new "Settings" web page
+	
 	
 ###2020.06.19
 - Updated for unRAID 6.9.0-beta22
 - VMWare Tools v11.1.0
 	
+	
 ###2020.03.08
 - Updated for unRAID 6.9.0-beta1
 - VMWare Tools v11.0.5
+	
 	
 ###2020.03.06
 - Updated for unRAID 6.8.3
 - VMWare Tools v11.0.5
 
+	
 ###2020.01.26
 - Updated for unRAID 6.8.2
 - VMWare Tools v11.0.5
+	
 	
 ###2020.01.11
 - Updated for unRAID 6.8.1
 - VMWare Tools v11.0.1
 
+	
 ###2020.01.07
 - Updated for unRAID 6.8.1-rc1
 - VMWare Tools v11.0.1
+	
 	
 ###2019.12.11
 - Updated for unRAID 6.8.0
 - VMWare Tools v11.0.1
 	
+	
 ###2019.12.07
 - Updated for unRAID 6.8.0-rc9
 - VMWare Tools v11.0.1
 
+	
 ###2019.12.04
 - Updated for unRAID 6.8.0-rc8
 - VMWare Tools v11.0.1
+	
 	
 ###2019.11.22
 - Updated for unRAID 6.8.0-rc7
 - VMWare Tools v11.0.1
 	
+	
 ###2019.11.16
 - Updated for unRAID 6.8.0-rc6
 - VMWare Tools v11.0.1
+	
 	
 ###2019.11.01
 - Updated for unRAID 6.8.0-rc5
 - VMWare Tools v11.0.1
 	
+	
 ###2019.10.24
 - Updated for unRAID 6.8.0-rc4
 - VMWare Tools v11.0.0
 
+	
 ###2019.08.10
 - Supports up to unRAID 6.7.2
 - VMWare Tools v10.3.10
@@ -137,7 +196,8 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-11.0.5-4.19.98-Unraid-x86_64.tgz
 	elif [ $KERNEL = "4.19.107-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.1.0-4.19.107-Unraid-x86_64.tgz
-	    
+	
+	## 6.9-beta
 	elif [ $KERNEL = "5.3.7-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.0.0-5.3.7-Unraid-x86_64.tgz
 	elif [ $KERNEL = "5.3.8-Unraid" ]; then
@@ -154,8 +214,30 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.7.7-Unraid-x86_64-202007111436.tgz
 	elif [ $KERNEL = "5.7.8-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.7.8-Unraid-x86_64-202007121525.tgz
+	elif [ $KERNEL = "5.8.12-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.8.12-Unraid-x86_64-202009282003.tgz
 	elif [ $KERNEL = "5.8.18-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.2.0-5.8.18-Unraid-x86_64-202011131520.tgz
+		OVTNAME=open_vm_tools-10.3.10-5.8.18-Unraid-x86_64-202011131509.tgz
+
+	## 6.9-rc
+	elif [ $KERNEL = "5.9.13-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.9.13-Unraid-x86_64-202012101159.tgz
+	elif [ $KERNEL = "5.10.1-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.1-Unraid-x86_64-202012191115.tgz
+	    
+	## 6.9.x
+	elif [ $KERNEL = "5.10.19-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.19-Unraid-x86_64-202103012031.tgz
+	elif [ $KERNEL = "5.10.21-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz
+#	elif [ $KERNEL = "5.10.28-Unraid" ]; then
+#		OVTNAME=open_vm_tools-10.3.10-5.10.28-Unraid-x86_64-202104072036.tgz
+	elif [ $KERNEL = "5.10.28-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.28-Unraid-x86_64-202104072036.tgz	    
+	## 6.10-rc
+	elif [ $KERNEL = "5.14.15-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.3.5-5.10.28-Unraid-x86_64-202202281928.tgz
+	    
 	else
 		echo ""
 		echo ""
@@ -192,7 +274,10 @@ if [ ! -f &source;/$OVTNAME ]; then
 <FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
 <URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
 </FILE>
-	
+
+<FILE Name="&source;/glibc-2.33-x86_64-3.txz" Run="upgradepkg --install-new">
+<URL>&repo;/glibc-2.33-x86_64-3.txz</URL>
+</FILE>
  
  
 <!-- The 'post-install' script -->
