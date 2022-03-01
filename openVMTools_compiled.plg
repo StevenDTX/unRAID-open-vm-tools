@@ -16,7 +16,6 @@
 	
 ###2022.03.01
 - Recompiled 6.9.2 with VMWare Tools v11.3.5
-- Added status page under Settings
 	
 	
 ###2021.11.07
@@ -231,7 +230,8 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 	elif [ $KERNEL = "5.10.21-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz
 	elif [ $KERNEL = "5.10.28-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.3.5-5.10.28-Unraid-x86_64-202202281928.tgz    
+		OVTNAME=open_vm_tools-11.3.5-5.10.28-Unraid-x86_64-202203011029.tgz
+	    
 	## 6.10-rc
 	elif [ $KERNEL = "5.14.15-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.3.5-5.14.15-Unraid-x86_64-202111071457.tgz
@@ -273,10 +273,6 @@ if [ ! -f &source;/$OVTNAME ]; then
 <URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
 </FILE>
 
-<FILE Name="&source;/glibc-2.33-x86_64-3.txz" Run="upgradepkg --install-new">
-<URL>&repo;/glibc-2.33-x86_64-3.txz</URL>
-</FILE>
- 
  
 <!-- The 'post-install' script -->
   <FILE Run="/bin/bash">
