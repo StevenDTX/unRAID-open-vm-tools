@@ -1,0 +1,320 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name "openVMTools_compiled">
+<!ENTITY author "StevenD">
+<!ENTITY version "2021.11.07">
+<!ENTITY source "/boot/config/plugins/&name;/packages">
+<!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
+<!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
+
+]>
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6" support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
+
+<CHANGES>
+##&name;
+	
+###2021.11.07
+- Updated for unRAID 6.10.0-rc2
+- VMWare Tools v11.3.5
+	
+	
+###2021.04.10
+- Fixed typo
+	
+	
+###2021.04.07
+- Updated for unRAID 6.9.2
+	
+	
+###2021.03.09
+- Updated for unRAID 6.9.1
+	
+	
+###2021.03.02
+- Updated for unRAID 6.9.0
+
+	
+###2020.12.19
+- Updated for unRAID 6.9.0-rc2
+
+	
+###2020.12.10
+- Updated for unRAID 6.9.0-rc1
+	
+	
+###2020.11.13
+- Updated for unRAID 6.9.0-beta35
+	
+	
+###2020.09.28
+- Updated for unRAID 6.9.0-beta29
+	
+	
+###2020.7.12
+- Updated for unRAID 6.9.0-beta25
+- Updated libffi to v3.3
+
+	
+###2020.7.11
+- Reverted unRAID 6.9.0-beta24 to use VMWare Tools v10.3.10. Removed "Settings" page. The "ioctl" message only appears a few times upon install.
+	
+	
+###2020.7.01
+- Reverted unRAID 6.9.0-beta22 to use VMWare Tools v11.0.5
+
+	
+###2020.06.28
+- Recompiled unRAID 6.8.3 to use VMWare Tools v11.1.0 with new "Settings" web page
+- Recompiled unRAID 6.9.0-beta22 to use VMWare Tools v11.1.0 with new "Settings" web page
+	
+	
+###2020.06.19
+- Updated for unRAID 6.9.0-beta22
+- VMWare Tools v11.1.0
+	
+	
+###2020.03.08
+- Updated for unRAID 6.9.0-beta1
+- VMWare Tools v11.0.5
+	
+	
+###2020.03.06
+- Updated for unRAID 6.8.3
+- VMWare Tools v11.0.5
+
+	
+###2020.01.26
+- Updated for unRAID 6.8.2
+- VMWare Tools v11.0.5
+	
+	
+###2020.01.11
+- Updated for unRAID 6.8.1
+- VMWare Tools v11.0.1
+
+	
+###2020.01.07
+- Updated for unRAID 6.8.1-rc1
+- VMWare Tools v11.0.1
+	
+	
+###2019.12.11
+- Updated for unRAID 6.8.0
+- VMWare Tools v11.0.1
+	
+	
+###2019.12.07
+- Updated for unRAID 6.8.0-rc9
+- VMWare Tools v11.0.1
+
+	
+###2019.12.04
+- Updated for unRAID 6.8.0-rc8
+- VMWare Tools v11.0.1
+	
+	
+###2019.11.22
+- Updated for unRAID 6.8.0-rc7
+- VMWare Tools v11.0.1
+	
+	
+###2019.11.16
+- Updated for unRAID 6.8.0-rc6
+- VMWare Tools v11.0.1
+	
+	
+###2019.11.01
+- Updated for unRAID 6.8.0-rc5
+- VMWare Tools v11.0.1
+	
+	
+###2019.10.24
+- Updated for unRAID 6.8.0-rc4
+- VMWare Tools v11.0.0
+
+	
+###2019.08.10
+- Supports up to unRAID 6.7.2
+- VMWare Tools v10.3.10
+
+	
+
+</CHANGES>
+
+<!-- The 'pre-install' script. -->
+  <FILE Run="/bin/bash">
+    <INLINE>
+KERNEL=`uname -r`
+echo ""
+echo "Kernel Version: $KERNEL"
+echo ""
+echo ""
+
+if 	[ $KERNEL = "4.18.20-unRAID" ]; then		
+		OVTNAME=open_vm_tools-10.3.5-4.18.20-unRAID-x86_64.tgz
+	elif [ $KERNEL = "4.19.16-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.16-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.17-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.17-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.20-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.20-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.23-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.23-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.31-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.31-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.33-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.5-4.19.33-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.37-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.37-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.41-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.41-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.43-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.43-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.48-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.48-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.55-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.55-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.56-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.56-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.60-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-4.19.60-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.87-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-4.19.87-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.88-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-4.19.88-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.93-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-4.19.93-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.94-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-4.19.94-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.98-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.5-4.19.98-Unraid-x86_64.tgz
+	elif [ $KERNEL = "4.19.107-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.1.0-4.19.107-Unraid-x86_64.tgz
+	
+	## 6.9-beta
+	elif [ $KERNEL = "5.3.7-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.0-5.3.7-Unraid-x86_64.tgz
+	elif [ $KERNEL = "5.3.8-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-5.3.8-Unraid-x86_64.tgz
+	elif [ $KERNEL = "5.3.11-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-5.3.11-Unraid-x86_64.tgz
+	elif [ $KERNEL = "5.3.12-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.1-5.3.12-Unraid-x86_64.tgz
+	elif [ $KERNEL = "5.5.8-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.5-5.5.8-Unraid-x86_64.tgz
+	elif [ $KERNEL = "5.7.2-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.0.5-5.7.2-Unraid-x86_64.tgz
+	elif [ $KERNEL = "5.7.7-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.7.7-Unraid-x86_64-202007111436.tgz
+	elif [ $KERNEL = "5.7.8-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.7.8-Unraid-x86_64-202007121525.tgz
+	elif [ $KERNEL = "5.8.12-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.8.12-Unraid-x86_64-202009282003.tgz
+	elif [ $KERNEL = "5.8.18-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.8.18-Unraid-x86_64-202011131509.tgz
+
+	## 6.9-rc
+	elif [ $KERNEL = "5.9.13-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.9.13-Unraid-x86_64-202012101159.tgz
+	elif [ $KERNEL = "5.10.1-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.1-Unraid-x86_64-202012191115.tgz
+	    
+	## 6.9.x
+	elif [ $KERNEL = "5.10.19-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.19-Unraid-x86_64-202103012031.tgz
+	elif [ $KERNEL = "5.10.21-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz
+	elif [ $KERNEL = "5.10.28-Unraid" ]; then
+		OVTNAME=open_vm_tools-10.3.10-5.10.28-Unraid-x86_64-202104072036.tgz
+	    
+	## 6.10-rc
+	elif [ $KERNEL = "5.14.15-Unraid" ]; then
+		OVTNAME=open_vm_tools-11.3.5-5.14.15-Unraid-x86_64-202111071457.tgz
+	    
+	else
+		echo ""
+		echo ""
+		echo "--------------------------------------------------------------------------"
+		echo ""
+		echo "   Sorry, OpenVMTools has not yet been compiled for your unRAID version."
+		echo ""
+		echo "--------------------------------------------------------------------------"
+		echo ""
+		echo ""
+		exit 1
+		
+	fi
+	
+OVTPKG=&source;/$OVTNAME
+OVTURL=&repo;/$OVTNAME
+
+mkdir -p &source;
+
+if [ ! -f &source;/$OVTNAME ]; then
+	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O &source;/$OVTNAME
+	fi
+
+	
+</INLINE>
+  </FILE>
+
+<!-- The dependency files. -->
+
+<FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
+<URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
+</FILE>
+
+<FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
+<URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
+</FILE>
+	
+ 
+ 
+<!-- The 'post-install' script -->
+  <FILE Run="/bin/bash">
+    <INLINE>
+KERNEL=`uname -r`
+OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)
+upgradepkg --install-new $OVTPKG
+
+echo -e "Starting VMWare Tools Daemon."
+killall vmtoolsd 2> /dev/null
+rm /var/run/vmtoolsd.pid 2> /dev/null
+/usr/local/bin/vmtoolsd -b /var/run/vmtoolsd.pid
+
+
+echo ""
+echo ""
+echo "-----------------------------------------------------------"
+echo " Plugin &name; is installed."
+echo " Plugin Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+echo ""
+
+</INLINE>
+  </FILE>
+ 
+ 
+ <!-- The 'remove' script. -->
+ 
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
+echo -e "Stopping VMWare Tools Daemon."
+killall vmtoolsd 2> /dev/null
+KERNEL=`uname -r`
+removepkg $OVTPKG
+rm -rf &plugdir;
+rm -rf &source;
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been removed."
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+  </FILE>
+
+</PLUGIN>
