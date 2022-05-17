@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2022.05.10">
+<!ENTITY version "2022.05.17">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,10 @@
 
 <CHANGES>
 ##&name;
+	
+###2022.05.17
+- Updated for unRAID 6.10.0
+- VMWare Tools v12.0.0
 	
 ###2022.05.10
 - Updated for unRAID 6.10.0-rc8
@@ -261,6 +265,11 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-12.0.0-5.15.37-Unraid-x86_64-202205051416.tgz
 	elif [ $KERNEL = "5.15.38-Unraid" ]; then
 		OVTNAME=open_vm_tools-12.0.0-5.15.38-Unraid-x86_64-202205101444.tgz
+	
+	    ## 6.10.0
+	elif [ $KERNEL = "5.15.40-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+	    
 	else
 		echo ""
 		echo ""
