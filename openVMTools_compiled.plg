@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2022.03.01">
+<!ENTITY version "2022.08.09">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -14,9 +14,41 @@
 <CHANGES>
 ##&name;
 	
-###2022.03.01
-- Recompiled 6.9.2 with VMWare Tools v11.3.5
+###2022.08.09
+- Updated for unRAID 6.11.0-rc3
+- VMWare Tools v12.0.5
+
+###2022.06.14
+- Updated for unRAID 6.10.3
+- VMWare Tools v12.0.5
 	
+###2022.05.29
+- Updated for unRAID 6.10.2
+- VMWare Tools v12.0.0
+	
+###2022.05.17
+- Updated for unRAID 6.10.0
+- VMWare Tools v12.0.0
+	
+###2022.05.10
+- Updated for unRAID 6.10.0-rc8
+- VMWare Tools v12.0.0
+	
+###2022.05.05
+- Updated for unRAID 6.10.0-rc6
+- VMWare Tools v12.0.0
+
+###2022.04.26
+- Updated for unRAID 6.10.0-rc5
+- VMWare Tools v12.0.0
+	
+###2022.03.19
+- Updated for unRAID 6.10.0-rc4
+- VMWare Tools v12.0.0
+	
+###2022.03.13
+- Updated for unRAID 6.10.0-rc3
+- VMWare Tools v12.0.0
 	
 ###2021.11.07
 - Updated for unRAID 6.10.0-rc2
@@ -230,11 +262,33 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 	elif [ $KERNEL = "5.10.21-Unraid" ]; then
 		OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz
 	elif [ $KERNEL = "5.10.28-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.3.5-5.10.28-Unraid-x86_64-202203011029.tgz
-
+		OVTNAME=open_vm_tools-10.3.10-5.10.28-Unraid-x86_64-202104072036.tgz
+	    
 	## 6.10-rc
 	elif [ $KERNEL = "5.14.15-Unraid" ]; then
 		OVTNAME=open_vm_tools-11.3.5-5.14.15-Unraid-x86_64-202111071457.tgz
+	elif [ $KERNEL = "5.15.27-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.27-Unraid-x86_64-202203131211.tgz
+	elif [ $KERNEL = "5.15.30-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.30-Unraid-x86_64-202203191437.tgz
+	elif [ $KERNEL = "5.15.35-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.35-Unraid-x86_64-202204262001.tgz
+	elif [ $KERNEL = "5.15.37-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.37-Unraid-x86_64-202205051416.tgz
+	elif [ $KERNEL = "5.15.38-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.38-Unraid-x86_64-202205101444.tgz
+	
+	## 6.10.0
+	elif [ $KERNEL = "5.15.40-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+	elif [ $KERNEL = "5.15.43-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
+	elif [ $KERNEL = "5.15.46-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz	    
+	    
+	## 6.11.0-rc
+	elif [ $KERNEL = "5.15.40-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.0.5-5.18.16-Unraid-x86_64-202208091941.tgz
 	    
 	else
 		echo ""
@@ -272,7 +326,8 @@ if [ ! -f &source;/$OVTNAME ]; then
 <FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg --install-new">
 <URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
 </FILE>
-
+	
+ 
  
 <!-- The 'post-install' script -->
   <FILE Run="/bin/bash">
