@@ -13,6 +13,75 @@
 
 <CHANGES>
 ##&name;
+
+###2022.06.14
+- Updated for unRAID 6.10.3
+- VMWare Tools v12.0.5
+	
+###2022.05.29
+- Updated for unRAID 6.10.2
+- VMWare Tools v12.0.0
+	
+###2022.05.17
+- Updated for unRAID 6.10.0
+- VMWare Tools v12.0.0
+	
+###2022.05.10
+- Updated for unRAID 6.10.0-rc8
+- VMWare Tools v12.0.0
+	
+###2022.05.05
+- Updated for unRAID 6.10.0-rc6
+- VMWare Tools v12.0.0
+
+###2022.04.26
+- Updated for unRAID 6.10.0-rc5
+- VMWare Tools v12.0.0
+	
+###2022.03.19
+- Updated for unRAID 6.10.0-rc4
+- VMWare Tools v12.0.0
+	
+###2022.03.13
+- Updated for unRAID 6.10.0-rc3
+- VMWare Tools v12.0.0
+	
+###2021.11.07
+- Updated for unRAID 6.10.0-rc2
+- VMWare Tools v11.3.5
+	
+	
+###2021.04.10
+- Fixed typo
+	
+	
+###2021.04.07
+- Updated for unRAID 6.9.2
+	
+	
+###2021.03.09
+- Updated for unRAID 6.9.1
+	
+	
+###2021.03.02
+- Updated for unRAID 6.9.0
+
+	
+###2020.12.19
+- Updated for unRAID 6.9.0-rc2
+
+	
+###2020.12.10
+- Updated for unRAID 6.9.0-rc1
+	
+	
+###2020.11.13
+- Updated for unRAID 6.9.0-beta35
+	
+	
+###2020.09.28
+- Updated for unRAID 6.9.0-beta29
+	
 	
 ###2022.08.09
 - Updated for unRAID 6.11.0-rc3
