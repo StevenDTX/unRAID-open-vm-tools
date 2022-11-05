@@ -17,7 +17,7 @@
 ###2022.11.05
 - Updated for unRAID 6.11.2
 - VMWare Tools v12.1.0
-- ****  Had to add 'ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
+- ****  Had to add 'ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
 	
 ###2022.10.06
 - Updated for unRAID 6.11.1
@@ -415,11 +415,7 @@ if [ ! -f &source;/$OVTNAME ]; then
 <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
 </FILE>
 
-<FILE Name="&source;/libffi-3.3-x86_64-1.txz" Run="upgradepkg">
-<URL>&repo;/libffi-3.3-x86_64-1.txz</URL>
-</FILE>
-	
- 
+
  
 <!-- The 'post-install' script -->
   <FILE Run="/bin/bash">
@@ -427,12 +423,16 @@ if [ ! -f &source;/$OVTNAME ]; then
 	  
 KERNEL=`uname -r`
 	    
-if [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ] || [ $KERNEL = "5.19.17-Unraid" ]; then
+if [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ]; then
 	ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
 	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
+	
+	elif [ $KERNEL = "5.19.17-Unraid" ]; then
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
 	    
 	else
-	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)
 		
 	fi
 	    
