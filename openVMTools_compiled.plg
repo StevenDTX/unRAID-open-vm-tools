@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2022.11.08">
+<!ENTITY version "2022.11.18">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,11 @@
 
 <CHANGES>
 ##&name;
+
+###2022.11.18
+- Confirmed works with 6.11.4
+- VMWare Tools v12.1.0
+- ****  Had to add 'ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
 	
 ###2022.11.08
 - Confirmed works with 6.11.3 
