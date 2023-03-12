@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2022.11.18">
+<!ENTITY version "2023.02.28">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,11 @@
 
 <CHANGES>
 ##&name;
+
+###2023.02.28
+- Confirmed works with 6.12 beta 18 (@kubedzero)
+- VMWare Tools v12.1.0
+- Creating `/usr/lib64/libffi.so.6` linked to `ln -s /usr/lib64/libffi.so.8` as in the previous plugin release
 
 ###2022.11.18
 - Confirmed works with 6.11.4
@@ -392,6 +397,11 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 	elif [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ] || [ $KERNEL = "5.19.17-Unraid" ]; then
 		OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
 	    
+	## 6.12.x
+	elif [ $KERNEL = "6.1.12-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
+
+
 	else
 		echo ""
 		echo ""
@@ -437,7 +447,7 @@ if [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ]; then
 	ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
 	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
 	
-	elif [ $KERNEL = "5.19.17-Unraid" ]; then
+	elif [ $KERNEL = "5.19.17-Unraid" ] || [ $KERNEL = "6.1.12-Unraid" ]; then
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
 	    
