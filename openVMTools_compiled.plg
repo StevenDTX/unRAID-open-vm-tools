@@ -452,7 +452,7 @@ if [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ]; then
 	ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
 	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
 	
-	elif [ $KERNEL = "5.19.17-Unraid" ] || [ $KERNEL = "6.1.12-Unraid" ]; then
+	elif [ $KERNEL = "5.19.17-Unraid" ] || [ $KERNEL = "6.1.12-Unraid" ] || [ $KERNEL = "6.1.19-Unraid" ]; then
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
 	    
