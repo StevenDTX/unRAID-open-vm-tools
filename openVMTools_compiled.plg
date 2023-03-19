@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2023.03.18">
+<!ENTITY version "2023.03.18.01">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,11 @@
 
 <CHANGES>
 ##&name;
+	
+###2023.03.18.01
+- Updated for 6.12.0-rc2
+- VMWare Tools v12.1.5
+- Creating `/usr/lib64/libffi.so.6` linked to `ln -s /usr/lib64/libffi.so.8` as in the previous plugin release
 	
 ###2023.03.18
 - Updated for 6.12.0-rc2
@@ -408,9 +413,10 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
 	    
 	## 6.12.x
-	elif [ $KERNEL = "6.1.12-Unraid" ] || [ $KERNEL = "6.1.19-Unraid" ] || [ $KERNEL = "6.1.20-Unraid" ]; then
+	elif [ $KERNEL = "6.1.12-Unraid" ] || [ $KERNEL = "6.1.19-Unraid" ]; then
 		OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
-
+	elif [ $KERNEL = "6.1.20-Unraid" ]; then
+		OVTNAME=open_vm_tools-12.1.5-202303181734.tgz
 
 	else
 		echo ""
@@ -456,14 +462,18 @@ KERNEL=`uname -r`
 if [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ]; then
 	ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
 	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
-	
-	elif [ $KERNEL = "5.19.17-Unraid" ] || [ $KERNEL = "6.1.12-Unraid" ] || [ $KERNEL = "6.1.19-Unraid" ] || [ $KERNEL = "6.1.20-Unraid" ]; then
+
+	elif [ $KERNEL = "5.19.17-Unraid" ] || [ $KERNEL = "6.1.12-Unraid" ] || [ $KERNEL = "6.1.19-Unraid" ]; then
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
-	    
+
+	elif [ $KERNEL = "6.1.20-Unraid" ]; then
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.5-202303181734.tgz)
+
 	else
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)
-		
+
 	fi
 	    
 
