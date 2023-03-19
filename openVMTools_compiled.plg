@@ -437,8 +437,8 @@ OVTURL=&repo;/$OVTNAME
 
 mkdir -p &source;
 
-if [ ! -f &source;/$OVTNAME ]; then
-	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O &source;/$OVTNAME
+if [ ! -f $OVTPKG ]; then
+	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O $OVTPKG
 	fi
 
 	
