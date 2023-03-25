@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2023.03.18.01">
+<!ENTITY version "2023.03.24">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,9 @@
 
 <CHANGES>
 ##&name;
+
+###2023.03.24
+- Script cleanup
 	
 ###2023.03.18.01
 - Updated for 6.12.0-rc2
@@ -305,120 +308,77 @@ echo "Kernel Version: $KERNEL"
 echo ""
 echo ""
 
-if 	[ $KERNEL = "4.18.20-unRAID" ]; then		
-		OVTNAME=open_vm_tools-10.3.5-4.18.20-unRAID-x86_64.tgz
-	elif [ $KERNEL = "4.19.16-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.16-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.17-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.17-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.20-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.20-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.23-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.23-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.31-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.31-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.33-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.5-4.19.33-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.37-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-4.19.37-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.41-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-4.19.41-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.43-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-4.19.43-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.48-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-4.19.48-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.55-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-4.19.55-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.56-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-4.19.56-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.60-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-4.19.60-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.87-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.1-4.19.87-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.88-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.1-4.19.88-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.93-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.1-4.19.93-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.94-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.1-4.19.94-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.98-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.5-4.19.98-Unraid-x86_64.tgz
-	elif [ $KERNEL = "4.19.107-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.1.0-4.19.107-Unraid-x86_64.tgz
+
+
+case $KERNEL in
+
+	4.18.20-*	)	OVTNAME=open_vm_tools-10.3.5-4.18.20-unRAID-x86_64.tgz	;;
+	4.19.16-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.16-Unraid-x86_64.tgz	;;
+	4.19.17-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.17-Unraid-x86_64.tgz	;;
+	4.19.20-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.20-Unraid-x86_64.tgz	;;
+	4.19.23-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.23-Unraid-x86_64.tgz	;;
+	4.19.31-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.31-Unraid-x86_64.tgz	;;
+	4.19.33-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.33-Unraid-x86_64.tgz	;;
+	4.19.37-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.37-Unraid-x86_64.tgz	;;
+	4.19.41-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.41-Unraid-x86_64.tgz	;;
+	4.19.43-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.43-Unraid-x86_64.tgz	;;
+	4.19.48-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.48-Unraid-x86_64.tgz	;;
+	4.19.55-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.55-Unraid-x86_64.tgz	;;
+	4.19.56-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.56-Unraid-x86_64.tgz	;;
+	4.19.60-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.60-Unraid-x86_64.tgz	;;
+	4.19.87-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.87-Unraid-x86_64.tgz	;;
+	4.19.88-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.88-Unraid-x86_64.tgz	;;
+	4.19.93-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.93-Unraid-x86_64.tgz	;;
+	4.19.94-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.94-Unraid-x86_64.tgz	;;
+	4.19.98-*	)	OVTNAME=open_vm_tools-11.0.5-4.19.98-Unraid-x86_64.tgz	;;
+	4.19.107-*	)	OVTNAME=open_vm_tools-11.1.0-4.19.107-Unraid-x86_64.tgz	;;
 	
 	## 6.9-beta
-	elif [ $KERNEL = "5.3.7-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.0-5.3.7-Unraid-x86_64.tgz
-	elif [ $KERNEL = "5.3.8-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.1-5.3.8-Unraid-x86_64.tgz
-	elif [ $KERNEL = "5.3.11-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.1-5.3.11-Unraid-x86_64.tgz
-	elif [ $KERNEL = "5.3.12-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.1-5.3.12-Unraid-x86_64.tgz
-	elif [ $KERNEL = "5.5.8-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.5-5.5.8-Unraid-x86_64.tgz
-	elif [ $KERNEL = "5.7.2-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.0.5-5.7.2-Unraid-x86_64.tgz
-	elif [ $KERNEL = "5.7.7-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.7.7-Unraid-x86_64-202007111436.tgz
-	elif [ $KERNEL = "5.7.8-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.7.8-Unraid-x86_64-202007121525.tgz
-	elif [ $KERNEL = "5.8.12-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.8.12-Unraid-x86_64-202009282003.tgz
-	elif [ $KERNEL = "5.8.18-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.8.18-Unraid-x86_64-202011131509.tgz
+	5.3.7-*		)	OVTNAME=open_vm_tools-11.0.0-5.3.7-Unraid-x86_64.tgz	;;
+	5.3.8-*		)	OVTNAME=open_vm_tools-11.0.1-5.3.8-Unraid-x86_64.tgz	;;
+	5.3.11-*	)	OVTNAME=open_vm_tools-11.0.1-5.3.11-Unraid-x86_64.tgz	;;
+	5.3.12-*	)	OVTNAME=open_vm_tools-11.0.1-5.3.12-Unraid-x86_64.tgz	;;
+	5.5.8-*		)	OVTNAME=open_vm_tools-11.0.5-5.5.8-Unraid-x86_64.tgz	;;
+	5.7.2-*		)	OVTNAME=open_vm_tools-11.0.5-5.7.2-Unraid-x86_64.tgz	;;
+	5.7.7-*		)	OVTNAME=open_vm_tools-10.3.10-5.7.7-Unraid-x86_64-202007111436.tgz	;;
+	5.7.8-*		)	OVTNAME=open_vm_tools-10.3.10-5.7.8-Unraid-x86_64-202007121525.tgz	;;
+	5.8.12-*	)	OVTNAME=open_vm_tools-10.3.10-5.8.12-Unraid-x86_64-202009282003.tgz	;;
+	5.8.18-*	)	OVTNAME=open_vm_tools-10.3.10-5.8.18-Unraid-x86_64-202011131509.tgz	;;
 
 	## 6.9-rc
-	elif [ $KERNEL = "5.9.13-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.9.13-Unraid-x86_64-202012101159.tgz
-	elif [ $KERNEL = "5.10.1-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.10.1-Unraid-x86_64-202012191115.tgz
+	5.9.13-*	)	OVTNAME=open_vm_tools-10.3.10-5.9.13-Unraid-x86_64-202012101159.tgz	;;
+	5.10.1-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.1-Unraid-x86_64-202012191115.tgz	;;
 	    
 	## 6.9.x
-	elif [ $KERNEL = "5.10.19-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.10.19-Unraid-x86_64-202103012031.tgz
-	elif [ $KERNEL = "5.10.21-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz
-	elif [ $KERNEL = "5.10.28-Unraid" ]; then
-		OVTNAME=open_vm_tools-10.3.10-5.10.28-Unraid-x86_64-202104072036.tgz
+	5.10.19-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.19-Unraid-x86_64-202103012031.tgz	;;
+	5.10.21-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz	;;
+	5.10.28-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.28-Unraid-x86_64-202104072036.tgz	;;
 	    
 	## 6.10-rc
-	elif [ $KERNEL = "5.14.15-Unraid" ]; then
-		OVTNAME=open_vm_tools-11.3.5-5.14.15-Unraid-x86_64-202111071457.tgz
-	elif [ $KERNEL = "5.15.27-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.0-5.15.27-Unraid-x86_64-202203131211.tgz
-	elif [ $KERNEL = "5.15.30-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.0-5.15.30-Unraid-x86_64-202203191437.tgz
-	elif [ $KERNEL = "5.15.35-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.0-5.15.35-Unraid-x86_64-202204262001.tgz
-	elif [ $KERNEL = "5.15.37-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.0-5.15.37-Unraid-x86_64-202205051416.tgz
-	elif [ $KERNEL = "5.15.38-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.0-5.15.38-Unraid-x86_64-202205101444.tgz
+	5.14.15-*	)	OVTNAME=open_vm_tools-11.3.5-5.14.15-Unraid-x86_64-202111071457.tgz	;;
+	5.15.27-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.27-Unraid-x86_64-202203131211.tgz	;;
+	5.15.30-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.30-Unraid-x86_64-202203191437.tgz	;;
+	5.15.35-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.35-Unraid-x86_64-202204262001.tgz	;;
+	5.15.37-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.37-Unraid-x86_64-202205051416.tgz	;;
+	5.15.38-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.38-Unraid-x86_64-202205101444.tgz	;;
 	
 	## 6.10.0
-	elif [ $KERNEL = "5.15.40-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
-	elif [ $KERNEL = "5.15.43-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
-	elif [ $KERNEL = "5.15.46-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz	    
+	5.15.40-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz	;;
+	5.15.43-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz	;;
+	5.15.46-*	)	OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz	;;  
 	    
 	## 6.11.0-rc
-	elif [ $KERNEL = "5.18.16-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.0.5-5.18.16-Unraid-x86_64-202208091941.tgz
-
+	5.18.16-*	)	OVTNAME=open_vm_tools-12.0.5-5.18.16-Unraid-x86_64-202208091941.tgz	;;
+	
 	## 6.11.0
-	elif [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ] || [ $KERNEL = "5.19.17-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
+	5.19.9-* | 5.19.14-* | 5.19.17-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
 	    
 	## 6.12.x
-	elif [ $KERNEL = "6.1.12-Unraid" ] || [ $KERNEL = "6.1.19-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
-	elif [ $KERNEL = "6.1.20-Unraid" ]; then
-		OVTNAME=open_vm_tools-12.1.5-202303181734.tgz
-
-	else
+	6.1.12-* | 6.1.19-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
+	6.*-*	)	OVTNAME=open_vm_tools-12.1.5-202303181734.tgz	;;
+	
+	# Version not compatible
+	*	)
 		echo ""
 		echo ""
 		echo "--------------------------------------------------------------------------"
@@ -428,10 +388,12 @@ if 	[ $KERNEL = "4.18.20-unRAID" ]; then
 		echo "--------------------------------------------------------------------------"
 		echo ""
 		echo ""
-		exit 1
-		
-	fi
-	
+		exit 1	;;
+
+esac  
+
+
+
 OVTPKG=&source;/$OVTNAME
 OVTURL=&repo;/$OVTNAME
 
@@ -458,24 +420,28 @@ if [ ! -f $OVTPKG ]; then
     <INLINE>
 	  
 KERNEL=`uname -r`
-	    
-if [ $KERNEL = "5.19.9-Unraid" ] || [ $KERNEL = "5.19.14-Unraid" ]; then
-	ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
-	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
 
-	elif [ $KERNEL = "5.19.17-Unraid" ] || [ $KERNEL = "6.1.12-Unraid" ] || [ $KERNEL = "6.1.19-Unraid" ]; then
+
+
+case $$KERNEL in
+
+	5.19.9-* | 5.19.14-*	)	
+		ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+
+	5.19.17-* | 6.1.12-* | 6.1.19-*	)	
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
-		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)
-
-	elif [ $KERNEL = "6.1.20-Unraid" ]; then
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+		
+	6.*-* 	)	
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
-		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.5-202303181734.tgz)
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.5-202303181734.tgz)	;;
 
-	else
-		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)
+	# Versions prior to 6.11.0
+	*	)	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)	;;
 
-	fi
-	    
+esac  
+
 
 upgradepkg --install-new $OVTPKG
 
