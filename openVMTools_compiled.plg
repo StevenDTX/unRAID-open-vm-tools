@@ -424,7 +424,7 @@ KERNEL=`uname -r`
 
 
 
-case $$KERNEL in
+case $KERNEL in
 
 	5.19.9-* | 5.19.14-*	)	
 		ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
