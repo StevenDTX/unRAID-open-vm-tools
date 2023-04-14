@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2023.03.24">
+<!ENTITY version "2023.04.14">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,9 @@
 
 <CHANGES>
 ##&name;
+	
+###2023.04.14
+- Fixed typo
 
 ###2023.03.24
 - Script cleanup
@@ -424,7 +427,7 @@ KERNEL=`uname -r`
 
 
 
-case $$KERNEL in
+case $KERNEL in
 
 	5.19.9-* | 5.19.14-*	)	
 		ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
