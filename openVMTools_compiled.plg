@@ -444,7 +444,7 @@ case $KERNEL in
 		
 	6.*-* 	)	
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
-		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.5-202303181734.tgz)	;;
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.3.5-202402131532.tgz)	;;
 
 	# Versions prior to 6.11.0
 	*	)	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)	;;
