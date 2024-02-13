@@ -15,7 +15,7 @@
 ##&name;
 	
 ###2024.02.13
-- Updated for 6.12.0-rc2
+- Updated for 6.12.7-rc2
 - VMWare Tools v12.3.5
 - New status page on Settings tab
 
@@ -384,7 +384,7 @@ case $KERNEL in
 	    
 	## 6.12.x
 	6.1.12-* | 6.1.19-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
-	6.*-*	)	OVTNAME=open_vm_tools-12.1.5-202303181734.tgz	;;
+	6.*-*	)		OVTNAME=open_vm_tools-12.3.5-202402131532.tgz	;;
 	
 	# Version not compatible
 	*	)
