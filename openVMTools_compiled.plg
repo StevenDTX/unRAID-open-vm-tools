@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled">
 <!ENTITY author "StevenD">
-<!ENTITY version "2024.02.13">
+<!ENTITY version "2024.09.01">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
@@ -13,6 +13,10 @@
 
 <CHANGES>
 ##&name;
+
+###2024.09.01
+- Tested on 7.0.0 beta
+- VMWare Tools v12.4.5
 	
 ###2024.02.13
 - Updated for 6.12.7-rc2
@@ -383,8 +387,9 @@ case $KERNEL in
 	5.19.9-* | 5.19.14-* | 5.19.17-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
 	    
 	## 6.12.x
-	6.1.12-* | 6.1.19-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
-	6.*-*	)		OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
+	#6.1.12-* | 6.1.19-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
+	6.1.10-* | 6.1.105-*	)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
+	6.*-*	)		OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
 	
 	# Version not compatible
 	*	)
@@ -438,13 +443,13 @@ case $KERNEL in
 		ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
 
-	5.19.17-* | 6.1.12-* | 6.1.19-*	)	
-		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
-		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+#	5.19.17-* | 6.1.12-* | 6.1.19-*	)	
+#		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+#		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
 		
 	6.*-* 	)	
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
-		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.3.5-202402131823.tgz)	;;
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.4.5-202409011517.tgz)	;;
 
 	# Versions prior to 6.11.0
 	*	)	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)	;;
