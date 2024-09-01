@@ -384,11 +384,11 @@ case $KERNEL in
 	5.18.16-*	)	OVTNAME=open_vm_tools-12.0.5-5.18.16-Unraid-x86_64-202208091941.tgz	;;
 	
 	## 6.11.0
-	5.19.9-* | 5.19.14-* | 5.19.17-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
+	5.19.*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
 	    
-	## 6.12.x
-	#6.1.12-* | 6.1.19-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
-	6.1.10-* | 6.1.105-*	)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
+	## 6.12.x / 7.0.0 beta
+	6.1.1[2-9]-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
+	6.1.[2-9][0-9]-* | 6.1.1[0-9][0-9]-* 	)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
 	6.*-*	)		OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
 	
 	# Version not compatible
@@ -443,9 +443,13 @@ case $KERNEL in
 		ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
 
-#	5.19.17-* | 6.1.12-* | 6.1.19-*	)	
-#		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
-#		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+	5.19.17-* | 6.1.12-* | 6.1.19-*	)	
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+
+	6.1.[2-9][0-9]-* | 6.1.1[0-9][0-9]-* 	)	
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.3.5-202402131823.tgz)	;;
 		
 	6.*-* 	)	
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
@@ -454,7 +458,7 @@ case $KERNEL in
 	# Versions prior to 6.11.0
 	*	)	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)	;;
 
-esac  
+esac 
 
 
 upgradepkg --install-new $OVTPKG
