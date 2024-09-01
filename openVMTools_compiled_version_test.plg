@@ -118,7 +118,7 @@ echo ""
 echo ""
 echo "-----------------------------------------------------------"
 echo ""
-echo " Version that would be installed:
+echo " Version that would be installed:"
 echo " $OVTNAME"
 echo ""
 echo "-----------------------------------------------------------"
