@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled Version Test">
 <!ENTITY author "StevenD">
-<!ENTITY version "2024.09.01">
+<!ENTITY version "2025.02.26">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
 
 ]>
@@ -94,7 +94,10 @@ case $KERNEL in
 	## 6.12.x / 7.0.0 beta
 	6.1.1[2-9]-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
 	6.1.[2-9][0-9]-* | 6.1.1[0-9][0-5]-* 	)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
-	6.*-*	)		OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
+	6.1.1[0-9][6-9]-* 	)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
+
+	## 7.0.x
+	6.[6-9]*	)		OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
 	
 	# Version not compatible
 	*	)
