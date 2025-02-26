@@ -97,7 +97,7 @@ case $KERNEL in
 	6.1.1[0-9][6-9]-* 	)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
 
 	## 7.0.x
-	6.[6-9]*	)		OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
+	6.*	)		OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
 	
 	# Version not compatible
 	*	)
