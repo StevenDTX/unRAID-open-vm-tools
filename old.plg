@@ -1,0 +1,508 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name "openVMTools_compiled">
+<!ENTITY author "StevenD">
+<!ENTITY version "2024.09.01">
+<!ENTITY source "/boot/config/plugins/&name;/packages">
+<!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
+<!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
+
+]>
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6" support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
+
+<CHANGES>
+##&name;
+
+###2024.09.01
+- Tested on 7.0.0 beta
+- VMWare Tools v12.4.5
+	
+###2024.02.13
+- Updated for 6.12.7-rc2
+- VMWare Tools v12.3.5
+- New status page on Settings tab
+
+###2023.04.14
+- Fixed typo
+
+###2023.03.24
+- Script cleanup
+- Added wildcard so that it should work with any v6.x kernel
+	
+###2023.03.18.01
+- Updated for 6.12.0-rc2
+- VMWare Tools v12.1.5
+- Creating `/usr/lib64/libffi.so.6` linked to `ln -s /usr/lib64/libffi.so.8` as in the previous plugin release
+	
+###2023.03.18
+- Updated for 6.12.0-rc2
+- VMWare Tools v12.1.0
+- Creating `/usr/lib64/libffi.so.6` linked to `ln -s /usr/lib64/libffi.so.8` as in the previous plugin release
+	
+###2023.03.15
+- Confirmed works with 6.12.0-rc1
+- VMWare Tools v12.1.0
+- Creating `/usr/lib64/libffi.so.6` linked to `ln -s /usr/lib64/libffi.so.8` as in the previous plugin release
+
+###2023.02.28
+- Confirmed works with 6.12 beta 18 (@kubedzero)
+- VMWare Tools v12.1.0
+- Creating `/usr/lib64/libffi.so.6` linked to `ln -s /usr/lib64/libffi.so.8` as in the previous plugin release
+
+###2022.11.18
+- Confirmed works with 6.11.4
+- VMWare Tools v12.1.0
+- ****  Had to add 'ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
+	
+###2022.11.08
+- Confirmed works with 6.11.3 
+- VMWare Tools v12.1.0
+- ****  Had to add 'ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
+	
+###2022.11.05
+- Updated for unRAID 6.11.2
+- VMWare Tools v12.1.0
+- ****  Had to add 'ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
+	
+###2022.10.06
+- Updated for unRAID 6.11.1
+- VMWare Tools v12.1.0
+- ****  Had to add 'ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
+
+###2022.09.23
+- Updated for unRAID 6.11.0
+- VMWare Tools v12.1.0
+- ****  Had to add 'ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6' as a workaround. Hopefully this doesnt cause any issues.
+	
+###2022.08.09
+- Updated for unRAID 6.11.0-rc3
+- VMWare Tools v12.0.5
+	
+###2022.06.14
+- Updated for unRAID 6.10.3
+- VMWare Tools v12.0.5
+	
+###2022.05.29
+- Updated for unRAID 6.10.2
+- VMWare Tools v12.0.0
+	
+###2022.05.17
+- Updated for unRAID 6.10.0
+- VMWare Tools v12.0.0
+	
+###2022.05.10
+- Updated for unRAID 6.10.0-rc8
+- VMWare Tools v12.0.0
+	
+###2022.05.05
+- Updated for unRAID 6.10.0-rc6
+- VMWare Tools v12.0.0
+
+###2022.04.26
+- Updated for unRAID 6.10.0-rc5
+- VMWare Tools v12.0.0
+	
+###2022.03.19
+- Updated for unRAID 6.10.0-rc4
+- VMWare Tools v12.0.0
+	
+###2022.03.13
+- Updated for unRAID 6.10.0-rc3
+- VMWare Tools v12.0.0
+	
+###2021.11.07
+- Updated for unRAID 6.10.0-rc2
+- VMWare Tools v11.3.5
+	
+	
+###2021.04.10
+- Fixed typo
+	
+	
+###2021.04.07
+- Updated for unRAID 6.9.2
+	
+	
+###2021.03.09
+- Updated for unRAID 6.9.1
+	
+	
+###2021.03.02
+- Updated for unRAID 6.9.0
+
+	
+###2020.12.19
+- Updated for unRAID 6.9.0-rc2
+
+	
+###2020.12.10
+- Updated for unRAID 6.9.0-rc1
+	
+	
+###2020.11.13
+- Updated for unRAID 6.9.0-beta35
+	
+	
+###2020.09.28
+- Updated for unRAID 6.9.0-beta29
+	
+	
+###2022.08.09
+- Updated for unRAID 6.11.0-rc3
+- VMWare Tools v12.0.5
+
+###2022.06.14
+- Updated for unRAID 6.10.3
+- VMWare Tools v12.0.5
+	
+###2022.05.29
+- Updated for unRAID 6.10.2
+- VMWare Tools v12.0.0
+	
+###2022.05.17
+- Updated for unRAID 6.10.0
+- VMWare Tools v12.0.0
+	
+###2022.05.10
+- Updated for unRAID 6.10.0-rc8
+- VMWare Tools v12.0.0
+	
+###2022.05.05
+- Updated for unRAID 6.10.0-rc6
+- VMWare Tools v12.0.0
+
+###2022.04.26
+- Updated for unRAID 6.10.0-rc5
+- VMWare Tools v12.0.0
+	
+###2022.03.19
+- Updated for unRAID 6.10.0-rc4
+- VMWare Tools v12.0.0
+	
+###2022.03.13
+- Updated for unRAID 6.10.0-rc3
+- VMWare Tools v12.0.0
+	
+###2021.11.07
+- Updated for unRAID 6.10.0-rc2
+- VMWare Tools v11.3.5
+	
+	
+###2021.04.10
+- Fixed typo
+	
+	
+###2021.04.07
+- Updated for unRAID 6.9.2
+	
+	
+###2021.03.09
+- Updated for unRAID 6.9.1
+	
+	
+###2021.03.02
+- Updated for unRAID 6.9.0
+
+	
+###2020.12.19
+- Updated for unRAID 6.9.0-rc2
+
+	
+###2020.12.10
+- Updated for unRAID 6.9.0-rc1
+	
+	
+###2020.11.13
+- Updated for unRAID 6.9.0-beta35
+	
+	
+###2020.09.28
+- Updated for unRAID 6.9.0-beta29
+	
+	
+###2020.7.12
+- Updated for unRAID 6.9.0-beta25
+- Updated libffi to v3.3
+
+	
+###2020.7.11
+- Reverted unRAID 6.9.0-beta24 to use VMWare Tools v10.3.10. Removed "Settings" page. The "ioctl" message only appears a few times upon install.
+	
+	
+###2020.7.01
+- Reverted unRAID 6.9.0-beta22 to use VMWare Tools v11.0.5
+
+	
+###2020.06.28
+- Recompiled unRAID 6.8.3 to use VMWare Tools v11.1.0 with new "Settings" web page
+- Recompiled unRAID 6.9.0-beta22 to use VMWare Tools v11.1.0 with new "Settings" web page
+	
+	
+###2020.06.19
+- Updated for unRAID 6.9.0-beta22
+- VMWare Tools v11.1.0
+	
+	
+###2020.03.08
+- Updated for unRAID 6.9.0-beta1
+- VMWare Tools v11.0.5
+	
+	
+###2020.03.06
+- Updated for unRAID 6.8.3
+- VMWare Tools v11.0.5
+
+	
+###2020.01.26
+- Updated for unRAID 6.8.2
+- VMWare Tools v11.0.5
+	
+	
+###2020.01.11
+- Updated for unRAID 6.8.1
+- VMWare Tools v11.0.1
+
+	
+###2020.01.07
+- Updated for unRAID 6.8.1-rc1
+- VMWare Tools v11.0.1
+	
+	
+###2019.12.11
+- Updated for unRAID 6.8.0
+- VMWare Tools v11.0.1
+	
+	
+###2019.12.07
+- Updated for unRAID 6.8.0-rc9
+- VMWare Tools v11.0.1
+
+	
+###2019.12.04
+- Updated for unRAID 6.8.0-rc8
+- VMWare Tools v11.0.1
+	
+	
+###2019.11.22
+- Updated for unRAID 6.8.0-rc7
+- VMWare Tools v11.0.1
+	
+	
+###2019.11.16
+- Updated for unRAID 6.8.0-rc6
+- VMWare Tools v11.0.1
+	
+	
+###2019.11.01
+- Updated for unRAID 6.8.0-rc5
+- VMWare Tools v11.0.1
+	
+	
+###2019.10.24
+- Updated for unRAID 6.8.0-rc4
+- VMWare Tools v11.0.0
+
+	
+###2019.08.10
+- Supports up to unRAID 6.7.2
+- VMWare Tools v10.3.10
+
+	
+
+</CHANGES>
+
+<!-- The 'pre-install' script. -->
+  <FILE Run="/bin/bash">
+    <INLINE>
+KERNEL=`uname -r`
+echo ""
+echo "Kernel Version: $KERNEL"
+echo ""
+echo ""
+
+
+
+case $KERNEL in
+
+	4.18.20-*	)	OVTNAME=open_vm_tools-10.3.5-4.18.20-unRAID-x86_64.tgz	;;
+	4.19.16-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.16-Unraid-x86_64.tgz	;;
+	4.19.17-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.17-Unraid-x86_64.tgz	;;
+	4.19.20-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.20-Unraid-x86_64.tgz	;;
+	4.19.23-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.23-Unraid-x86_64.tgz	;;
+	4.19.31-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.31-Unraid-x86_64.tgz	;;
+	4.19.33-*	)	OVTNAME=open_vm_tools-10.3.5-4.19.33-Unraid-x86_64.tgz	;;
+	4.19.37-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.37-Unraid-x86_64.tgz	;;
+	4.19.41-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.41-Unraid-x86_64.tgz	;;
+	4.19.43-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.43-Unraid-x86_64.tgz	;;
+	4.19.48-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.48-Unraid-x86_64.tgz	;;
+	4.19.55-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.55-Unraid-x86_64.tgz	;;
+	4.19.56-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.56-Unraid-x86_64.tgz	;;
+	4.19.60-*	)	OVTNAME=open_vm_tools-10.3.10-4.19.60-Unraid-x86_64.tgz	;;
+	4.19.87-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.87-Unraid-x86_64.tgz	;;
+	4.19.88-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.88-Unraid-x86_64.tgz	;;
+	4.19.93-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.93-Unraid-x86_64.tgz	;;
+	4.19.94-*	)	OVTNAME=open_vm_tools-11.0.1-4.19.94-Unraid-x86_64.tgz	;;
+	4.19.98-*	)	OVTNAME=open_vm_tools-11.0.5-4.19.98-Unraid-x86_64.tgz	;;
+	4.19.107-*	)	OVTNAME=open_vm_tools-11.1.0-4.19.107-Unraid-x86_64.tgz	;;
+	
+	## 6.9-beta
+	5.3.7-*		)	OVTNAME=open_vm_tools-11.0.0-5.3.7-Unraid-x86_64.tgz	;;
+	5.3.8-*		)	OVTNAME=open_vm_tools-11.0.1-5.3.8-Unraid-x86_64.tgz	;;
+	5.3.11-*	)	OVTNAME=open_vm_tools-11.0.1-5.3.11-Unraid-x86_64.tgz	;;
+	5.3.12-*	)	OVTNAME=open_vm_tools-11.0.1-5.3.12-Unraid-x86_64.tgz	;;
+	5.5.8-*		)	OVTNAME=open_vm_tools-11.0.5-5.5.8-Unraid-x86_64.tgz	;;
+	5.7.2-*		)	OVTNAME=open_vm_tools-11.0.5-5.7.2-Unraid-x86_64.tgz	;;
+	5.7.7-*		)	OVTNAME=open_vm_tools-10.3.10-5.7.7-Unraid-x86_64-202007111436.tgz	;;
+	5.7.8-*		)	OVTNAME=open_vm_tools-10.3.10-5.7.8-Unraid-x86_64-202007121525.tgz	;;
+	5.8.12-*	)	OVTNAME=open_vm_tools-10.3.10-5.8.12-Unraid-x86_64-202009282003.tgz	;;
+	5.8.18-*	)	OVTNAME=open_vm_tools-10.3.10-5.8.18-Unraid-x86_64-202011131509.tgz	;;
+
+	## 6.9-rc
+	5.9.13-*	)	OVTNAME=open_vm_tools-10.3.10-5.9.13-Unraid-x86_64-202012101159.tgz	;;
+	5.10.1-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.1-Unraid-x86_64-202012191115.tgz	;;
+	    
+	## 6.9.x
+	5.10.19-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.19-Unraid-x86_64-202103012031.tgz	;;
+	5.10.21-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.21-Unraid-x86_64-202103090740.tgz	;;
+	5.10.28-*	)	OVTNAME=open_vm_tools-10.3.10-5.10.28-Unraid-x86_64-202104072036.tgz	;;
+	    
+	## 6.10-rc
+	5.14.15-*	)	OVTNAME=open_vm_tools-11.3.5-5.14.15-Unraid-x86_64-202111071457.tgz	;;
+	5.15.27-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.27-Unraid-x86_64-202203131211.tgz	;;
+	5.15.30-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.30-Unraid-x86_64-202203191437.tgz	;;
+	5.15.35-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.35-Unraid-x86_64-202204262001.tgz	;;
+	5.15.37-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.37-Unraid-x86_64-202205051416.tgz	;;
+	5.15.38-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.38-Unraid-x86_64-202205101444.tgz	;;
+	
+	## 6.10.0
+	5.15.40-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz	;;
+	5.15.43-*	)	OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz	;;
+	5.15.46-*	)	OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz	;;  
+	    
+	## 6.11.0-rc
+	5.18.16-*	)	OVTNAME=open_vm_tools-12.0.5-5.18.16-Unraid-x86_64-202208091941.tgz	;;
+	
+	## 6.11.0
+	5.19.*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
+	    
+	## 6.12.x / 7.0.0 beta
+	6.1.1[2-9]-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
+	6.1.[2-9][0-9]-* | 6.1.1[0-9][0-5]-* 	)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
+	6.*-*	)		OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
+	
+	# Version not compatible
+	*	)
+		echo ""
+		echo ""
+		echo "--------------------------------------------------------------------------"
+		echo ""
+		echo "   Sorry, OpenVMTools has not yet been compiled for your unRAID version."
+		echo ""
+		echo "--------------------------------------------------------------------------"
+		echo ""
+		echo ""
+		exit 1	;;
+
+esac  
+
+
+
+OVTPKG=&source;/$OVTNAME
+OVTURL=&repo;/$OVTNAME
+
+mkdir -p &source;
+
+if [ ! -f $OVTPKG ]; then
+	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O $OVTPKG
+	fi
+
+	
+</INLINE>
+  </FILE>
+
+<!-- The dependency files. -->
+
+<FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
+<URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
+</FILE>
+
+
+ 
+<!-- The 'post-install' script -->
+  <FILE Run="/bin/bash">
+    <INLINE>
+	  
+KERNEL=`uname -r`
+
+
+
+case $KERNEL in
+
+	5.19.9-* | 5.19.14-*	)	
+		ln -s /usr/lib64/libffi.so.7 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+
+	5.19.17-* | 6.1.12-* | 6.1.19-*	)	
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+
+	6.1.[2-9][0-9]-* | 6.1.1[0-9][0-5]-* 	)
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.3.5-202402131823.tgz)	;;
+		
+	6.*-* 	)	
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.4.5-202409011517.tgz)	;;
+
+	# Versions prior to 6.11.0
+	*	)	OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-*$KERNEL*.tgz)	;;
+
+esac 
+
+
+upgradepkg --install-new $OVTPKG
+
+echo -e "Starting VMWare Tools Daemon."
+killall vmtoolsd 2> /dev/null
+rm /var/run/vmtoolsd.pid 2> /dev/null
+/usr/local/bin/vmtoolsd -b /var/run/vmtoolsd.pid
+
+VMTOOLSVERSION=`vmware-toolbox-cmd -v`
+
+
+echo ""
+echo ""
+echo "-----------------------------------------------------------"
+echo " Plugin &name; is installed."
+echo " Plugin Version:         &version;"
+echo " VMWare Tools Version:   $VMTOOLSVERSION"
+echo "-----------------------------------------------------------"
+echo ""
+echo ""
+
+</INLINE>
+  </FILE>
+ 
+ 
+ <!-- The 'remove' script. -->
+ 
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
+echo -e "Stopping VMWare Tools Daemon."
+killall vmtoolsd 2> /dev/null
+KERNEL=`uname -r`
+removepkg $OVTPKG
+rm -rf &plugdir;
+rm -rf &source;
+
+echo ""
+echo "-----------------------------------------------------------"
+echo " &name; has been removed."
+echo " Version: &version;"
+echo "-----------------------------------------------------------"
+echo ""
+</INLINE>
+  </FILE>
+
+</PLUGIN>
