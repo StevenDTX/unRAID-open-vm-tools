@@ -38,28 +38,28 @@ echo ""
 
 case $UNRAID_VERSION in
 	
-	## 6.10.0
-	6.10.3			)	OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz	;;
-	6.10.2			)	OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz	;;
-	6.10.[0-1]		)	OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz	;;
-	    
-	## 6.11.0
-	6.11.*			)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
-	    
+	## 7.0.x
+	7.*			)	OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
+
 	## 6.12.x / 7.0.0 beta
 	6.12.[0-9][0-9]		)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
 	6.12.[0-9] 		)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
 
-	## 7.0.x
-	7.*			)	OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
-	
+	## 6.11.0
+	6.11.*			)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
+
+	## 6.10.0
+	6.10.3			)	OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz	;;
+	6.10.2			)	OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz	;;
+	6.10.[0-1]		)	OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz	;;
+		
 	# Version not compatible
-	*	)
+	*			)
 		echo ""
 		echo ""
 		echo "--------------------------------------------------------------------------"
 		echo ""
-		echo "   Sorry, OpenVMTools has not yet been compiled for your unRAID version."
+		echo "   Sorry, OpenVMTools has not been compiled for your unRAID version."
 		echo ""
 		echo "   If using a version of unRAID prior to v6.10.0, you may need this plugin:
 		echo "   https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/refs/heads/master/openVMTools_compiled_prior_to_v6.12.0.plg
@@ -97,25 +97,30 @@ if [ ! -f $OVTPKG ]; then
     <INLINE>
 
 # fix for older version of libffi
-ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+if [ ! -f /usr/lib64/libffi.so.6 ]; then
+	ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+else
+	echo "/usr/lib64/libffi.so.6 link already exists"
+fi
+
 
 UNRAID_VERSION=`cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g'`
 case $UNRAID_VERSION in
 
-	# v6.10.xx
-	6.10.3		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)	;;
-	6.10.2		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)	;;
-	6.10.[0-1]	)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)	;;
-
-	# v6.11.xx
-	6.11.*		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+	# v7.0.x
+	7.*  		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.5.0-202502251957.tgz)	;;
 
 	# v6.12.xx
 	6.12.[0-9][0-9]	)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.4.5-202409011517.tgz)	;;
 	6.12.[0-9] 	)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.3.5-202402131823.tgz)	;;
 
-	# v7.0.x
-	7.*  		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.5.0-202502251957.tgz)	;;
+	# v6.11.xx
+	6.11.*		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
+
+	# v6.10.xx
+	6.10.3		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)	;;
+	6.10.2		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)	;;
+	6.10.[0-1]	)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)	;;
 
 esac 
 
