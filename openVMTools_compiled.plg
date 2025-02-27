@@ -393,7 +393,7 @@ case $KERNEL in
 	## 6.12.x / 7.0.0 beta
 	6.1.1[2-9]-*	)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
 	6.1.[2-9][0-9]-* | 6.1.1[0-9][0-5]-* 	)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
-	6.1.1[0-9][6-9]-* 	)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
+	6.1.1[0-9][6-9]-* 	)	OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
 
 	## 7.0.x
 	6.*	)		OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
@@ -458,11 +458,11 @@ case $KERNEL in
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.3.5-202402131823.tgz)	;;
 		
-	6.*-* 	)	
-		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
-		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.4.5-202409011517.tgz)	;;
-
 	6.1.1[0-9][6-9]-*  	)	
+		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.5.0-202502251957.tgz)	;;
+
+	6.*-*  	)	
 		ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
 		OVTPKG=$(ls /boot/config/plugins/OpenVMTools_compiled/packages/open_vm_tools-12.5.0-202502251957.tgz)	;;
 
