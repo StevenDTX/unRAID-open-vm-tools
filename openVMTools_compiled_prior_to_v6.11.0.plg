@@ -1,18 +1,23 @@
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE PLUGIN [
-<!ENTITY name "openVMTools_compiled_prior_to_v6.11.0">
+<!ENTITY name "openVMTools_compiled_prior_to_v6.12.0">
 <!ENTITY author "StevenD">
-<!ENTITY version "2024.09.01">
+<!ENTITY version "2025.02.26">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
 <!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
 
 ]>
-<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6"; max="6.10.3"; support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6"; max="6.11.5"; support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
 
 <CHANGES>
 ##&name;
+
+###2025.02.26
+- *** This plugin will no longer be updated. ***
+- Only works with unRAID 6.6.6 to 6.11.5
+- VMWare Tools v12.4.5
 
 ###2024.09.01
 - Tested on 7.0.0 beta
@@ -492,7 +497,11 @@ echo ""
 echo -e "Stopping VMWare Tools Daemon."
 killall vmtoolsd 2> /dev/null
 KERNEL=`uname -r`
-removepkg $OVTPKG
+for file in /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools*; do 
+    if [ -f "$file" ]; then 
+        removepkg "$file" 
+    fi 
+done
 rm -rf &plugdir;
 rm -rf &source;
 
