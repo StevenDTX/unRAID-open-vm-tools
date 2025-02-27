@@ -504,8 +504,16 @@ echo ""
     <INLINE>
 echo -e "Stopping VMWare Tools Daemon."
 killall vmtoolsd 2> /dev/null
-KERNEL=`uname -r`
-removepkg $OVTPKG
+#KERNEL=`uname -r`
+#removepkg $OVTPKG
+
+for file in /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools*; do 
+    if [ -f "$file" ]; then 
+        removepkg "$file" 
+    fi 
+done
+
+
 rm -rf &plugdir;
 rm -rf &source;
 
