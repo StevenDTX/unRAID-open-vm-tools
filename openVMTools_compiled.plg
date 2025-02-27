@@ -16,7 +16,9 @@
 
 ###2025.02.25
 - Tested on 7.0.1
+- Tested on 6.12.15
 - VMWare Tools v12.5.0
+- Removed support for unRAID versions prior to 6.10.0
 
 
 </CHANGES>
