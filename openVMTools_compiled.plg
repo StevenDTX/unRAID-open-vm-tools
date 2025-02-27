@@ -1,15 +1,20 @@
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE PLUGIN [
-<!ENTITY name "openVMTools_compiled">
-<!ENTITY author "StevenD">
-<!ENTITY version "2025.02.27">
-<!ENTITY source "/boot/config/plugins/&name;/packages">
-<!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
-<!ENTITY repo "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/packages">
-<!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
+<!ENTITY name		"openVMTools_compiled">
+<!ENTITY author		"StevenD">
+<!ENTITY version	"2025.02.27">
+<!ENTITY source		"/boot/config/plugins/&name;/packages">
+<!ENTITY plugdir	"/usr/local/emhttp/plugins/&name;">
+<!ENTITY emhttp		"/usr/local/emhttp/plugins/&name;">
+<!ENTITY launch		"Settings/&name;">
+<!ENTITY gitURL		"https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master">
+<!ENTITY repo		"&gitURL;/packages">
+<!ENTITY pluginURL	"&gitURL;/&name;.plg">
+<!ENTITY min		"6.10.0">
+<!ENTITY supportURL	"https://forums.unraid.net/topic/187519-plugin-open-vm-tools/">
 
 ]>
-<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.10.0" support="https://forums.unraid.net/topic/187519-plugin-open-vm-tools">
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="&min;" support="&supportURL;">
 
 <CHANGES>
 ##&name;
