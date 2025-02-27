@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "openVMTools_compiled Version Test">
 <!ENTITY author "StevenD">
-<!ENTITY version "2024.09.01">
+<!ENTITY version "2025.0226a">
 <!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
 
 ]>
