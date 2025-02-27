@@ -27,15 +27,15 @@
 <!-- The 'pre-install' script. -->
   <FILE Run="/bin/bash">
     <INLINE>
-KERNEL=`uname -r`
+
 UNRAID_VERSION=`cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g'`
+KERNEL=`uname -r`
 
 echo ""
 echo "unRAID Version: $UNRAID_VERSION"
 echo "Kernel Version: $KERNEL"
 echo ""
 echo ""
-
 
 case $UNRAID_VERSION in
 	
@@ -48,6 +48,7 @@ case $UNRAID_VERSION in
 	6.11.*			)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
 	    
 	## 6.12.x / 7.0.0 beta
+	6.12.15			)	OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
 	6.12.[0-9][0-9]		)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
 	6.12.[0-9] 		)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
 
@@ -82,7 +83,6 @@ mkdir -p &source;
 if [ ! -f $OVTPKG ]; then
 	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O $OVTPKG
 	fi
-
 	
 </INLINE>
   </FILE>
