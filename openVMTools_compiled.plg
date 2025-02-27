@@ -47,7 +47,6 @@ case $UNRAID_VERSION in
 	6.11.*			)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
 	    
 	## 6.12.x / 7.0.0 beta
-	6.12.15			)	OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
 	6.12.[0-9][0-9]		)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
 	6.12.[0-9] 		)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
 
@@ -112,7 +111,6 @@ case $UNRAID_VERSION in
 	6.11.*		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.1.0-202208241430.tgz)	;;
 
 	# v6.12.xx
-	6.12.15		)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.5.0-202502251957.tgz)	;;
 	6.12.[0-9][0-9]	)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.4.5-202409011517.tgz)	;;
 	6.12.[0-9] 	)	OVTPKG=$(ls /boot/config/plugins/openVMTools_compiled/packages/open_vm_tools-12.3.5-202402131823.tgz)	;;
 
