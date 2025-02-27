@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE PLUGIN [
-<!ENTITY name "openVMTools_compiled">
+<!ENTITY name "openVMTools_compiled_prior_to_v6.11.0">
 <!ENTITY author "StevenD">
 <!ENTITY version "2024.09.01">
 <!ENTITY source "/boot/config/plugins/&name;/packages">
@@ -9,7 +9,7 @@
 <!ENTITY pluginURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master/&name;.plg">
 
 ]>
-<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6" support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
+<PLUGIN name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.6.6"; max="6.10.3"; support="https://forums.unraid.net/topic/36603-open-vm-tools-for-unraid-6">
 
 <CHANGES>
 ##&name;
