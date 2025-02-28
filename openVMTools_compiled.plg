@@ -16,13 +16,16 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="&min;" support="&supportURL;">
 
 <CHANGES>
-  ##&name;
 
-  ###2025.02.28
-  - Tested on 7.0.1
-  - VMWare Tools v12.5.0
-  - Removed support for unRAID versions prior to 6.10.0
-  - New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
+##&name;
+<CHANGES>
+
+###2025.02.28
+- Tested on 7.0.1
+- VMWare Tools v12.5.0
+- Removed support for unRAID versions prior to 6.10.0
+- New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
+
 </CHANGES>
 
 <!-- The 'pre-install' script. -->
