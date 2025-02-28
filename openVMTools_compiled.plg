@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name		"openVMTools_compiled">
 <!ENTITY author		"StevenD">
-<!ENTITY version	"2025.02.27b">
+<!ENTITY version	"2025.02.28">
 <!ENTITY source		"/boot/config/plugins/&name;/packages">
 <!ENTITY plugdir	"/usr/local/emhttp/plugins/&name;">
 <!ENTITY emhttp		"/usr/local/emhttp/plugins/&name;">
@@ -45,7 +45,7 @@ echo ""
 case $UNRAID_VERSION in
 	
 	## 7.0.x
-	7.*			)	OVTNAME=open_vm_tools-12.5.0-202502271958.tgz	;;
+	7.*			)	OVTNAME=open_vm_tools-12.5.0-202502272018.tgz	;;
 
 	## 6.12.x / 7.0.0 beta
 	6.12.[0-9][0-9]		)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
@@ -114,7 +114,7 @@ UNRAID_VERSION=`cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g'`
 case $UNRAID_VERSION in
 
 	# v7.0.x
-	7.*  		)	OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502271958.tgz)	;;
+	7.*  		)	OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)	;;
 
 	# v6.12.xx
 	6.12.[0-9][0-9]	)	OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)	;;
