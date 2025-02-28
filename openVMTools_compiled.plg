@@ -44,7 +44,7 @@ echo ""
 case $UNRAID_VERSION in
 	
 	## 7.0.x
-	7.*			)	OVTNAME=open_vm_tools-12.5.0-202502251957.tgz	;;
+	7.*			)	OVTNAME=open_vm_tools-12.5.0-202502271803.tgz	;;
 
 	## 6.12.x / 7.0.0 beta
 	6.12.[0-9][0-9]		)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
@@ -113,7 +113,7 @@ UNRAID_VERSION=`cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g'`
 case $UNRAID_VERSION in
 
 	# v7.0.x
-	7.*  		)	OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502251957.tgz)	;;
+	7.*  		)	OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502271803.tgz)	;;
 
 	# v6.12.xx
 	6.12.[0-9][0-9]	)	OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)	;;
