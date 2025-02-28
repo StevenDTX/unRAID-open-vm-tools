@@ -28,7 +28,7 @@
 <!-- The 'pre-install' script. -->
 <FILE Run="/bin/bash">
   <INLINE>
-UNRAID_VERSION=$(cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g')
+UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 KERNEL=$(uname -r)
 
 echo ""
@@ -109,7 +109,7 @@ else
   echo "/usr/lib64/libffi.so.6 link already exists"
 fi
 
-UNRAID_VERSION=$(cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g')
+UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 case $UNRAID_VERSION in
   # v7.0.x
   7.*)
