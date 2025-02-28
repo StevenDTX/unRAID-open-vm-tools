@@ -1,173 +1,177 @@
 <?xml version="1.0" standalone="yes"?>
 <!DOCTYPE PLUGIN [
-<!ENTITY name		"openVMTools_compiled">
-<!ENTITY author		"StevenD">
-<!ENTITY version	"2025.02.28">
-<!ENTITY source		"/boot/config/plugins/&name;/packages">
-<!ENTITY plugdir	"/usr/local/emhttp/plugins/&name;">
-<!ENTITY emhttp		"/usr/local/emhttp/plugins/&name;">
-<!ENTITY launch		"Settings/&name;">
-<!ENTITY gitURL		"https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master">
-<!ENTITY repo		"&gitURL;/packages">
-<!ENTITY pluginURL	"&gitURL;/&name;.plg">
-<!ENTITY min		"6.10.0">
-<!ENTITY supportURL	"https://forums.unraid.net/topic/187519-plugin-open-vm-tools/">
-
+  <!ENTITY name "openVMTools_compiled">
+  <!ENTITY author "StevenD">
+  <!ENTITY version "2025.02.28">
+  <!ENTITY source "/boot/config/plugins/&name;/packages">
+  <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
+  <!ENTITY emhttp "/usr/local/emhttp/plugins/&name;">
+  <!ENTITY launch "Settings/&name;">
+  <!ENTITY gitURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master">
+  <!ENTITY repo "&gitURL;/packages">
+  <!ENTITY pluginURL "&gitURL;/&name;.plg">
+  <!ENTITY min "6.10.0">
+  <!ENTITY supportURL "https://forums.unraid.net/topic/187519-plugin-open-vm-tools/">
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="&min;" support="&supportURL;">
 
 <CHANGES>
-##&name;
+  ##&name;
 
-###2025.02.25
-- Tested on 7.0.1
-- VMWare Tools v12.5.0
-- Removed support for unRAID versions prior to 6.10.0
-- New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
-
-
+  ###2025.02.28
+  - Tested on 7.0.1
+  - VMWare Tools v12.5.0
+  - Removed support for unRAID versions prior to 6.10.0
+  - New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
 </CHANGES>
 
-
 <!-- The 'pre-install' script. -->
-  <FILE Run="/bin/bash">
-    <INLINE>
-
-UNRAID_VERSION=`cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g'`
-KERNEL=`uname -r`
+<FILE Run="/bin/bash">
+  <INLINE>
+UNRAID_VERSION=$(cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g')
+KERNEL=$(uname -r)
 
 echo ""
 echo "unRAID Version: $UNRAID_VERSION"
 echo "Kernel Version: $KERNEL"
 echo ""
-echo ""
 
 case $UNRAID_VERSION in
-	
-	## 7.0.x
-	7.*			)	OVTNAME=open_vm_tools-12.5.0-202502272018.tgz	;;
-
-	## 6.12.x / 7.0.0 beta
-	6.12.[0-9][0-9]		)	OVTNAME=open_vm_tools-12.4.5-202409011517.tgz	;;
-	6.12.[0-9] 		)	OVTNAME=open_vm_tools-12.3.5-202402131823.tgz	;;
-
-	## 6.11.0
-	6.11.*			)	OVTNAME=open_vm_tools-12.1.0-202208241430.tgz	;;
-
-	## 6.10.0
-	6.10.3			)	OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz	;;
-	6.10.2			)	OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz	;;
-	6.10.[0-1]		)	OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz	;;
-		
-	# Version not compatible
-	*			)
-		echo ""
-		echo ""
-		echo "--------------------------------------------------------------------------"
-		echo ""
-		echo "   Sorry, OpenVMTools has not been compiled for your unRAID version."
-		echo ""
-		echo "   If using a version of unRAID prior to v6.10.0, you may need this plugin:
-		echo "   https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/refs/heads/master/openVMTools_compiled_prior_to_v6.12.0.plg
-		echo ""
-		echo "--------------------------------------------------------------------------"
-		echo ""
-		echo ""
-		
-		exit 1	;;
-esac  
-
-
+  ## 7.0.x
+  7.*)
+    OVTNAME=open_vm_tools-12.5.0-202502272018.tgz
+    ;;
+  ## 6.12.x / 7.0.0 beta
+  6.12.[0-9][0-9])
+    OVTNAME=open_vm_tools-12.4.5-202409011517.tgz
+    ;;
+  6.12.[0-9])
+    OVTNAME=open_vm_tools-12.3.5-202402131823.tgz
+    ;;
+  ## 6.11.0
+  6.11.*)
+    OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
+    ;;
+  ## 6.10.0
+  6.10.3)
+    OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz
+    ;;
+  6.10.2)
+    OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
+    ;;
+  6.10.[0-1])
+    OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+    ;;
+  # Version not compatible
+  *)
+    echo ""
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "   Sorry, OpenVMTools has not been compiled for your unRAID version."
+    echo ""
+    echo "   If using a version of unRAID prior to v6.10.0, you may need this plugin:"
+    echo "   https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/refs/heads/master/openVMTools_compiled_prior_to_v6.12.0.plg"
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    exit 1
+    ;;
+esac
 
 OVTPKG=&source;/$OVTNAME
 OVTURL=&repo;/$OVTNAME
 
 mkdir -p &source;
 
-if [ ! -f $OVTPKG ]; then
-	wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case $OVTURL -O $OVTPKG
-	fi
-	
-</INLINE>
-  </FILE>
-
-<!-- The dependency files. -->
-
-<FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
-<URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
+if [ ! -f "$OVTPKG" ]; then
+  wget -c --timeout=15 --no-clobber --no-cache --no-check-certificate --ignore-case "$OVTURL" -O "$OVTPKG"
+  if [ $? -ne 0 ]; then
+    echo "Failed to download $OVTURL"
+    exit 1
+  fi
+fi
+  </INLINE>
 </FILE>
 
+<!-- The dependency files. -->
+<FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
+  <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
+</FILE>
 
 <!-- The 'post-install' script -->
-  <FILE Run="/bin/bash">
-    <INLINE>
-
+<FILE Run="/bin/bash">
+  <INLINE>
 # fix for older version of libffi
 if [ ! -f /usr/lib64/libffi.so.6 ]; then
-	ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
+  ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
 else
-	echo "/usr/lib64/libffi.so.6 link already exists"
+  echo "/usr/lib64/libffi.so.6 link already exists"
 fi
 
-
-UNRAID_VERSION=`cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g'`
+UNRAID_VERSION=$(cat /etc/unraid-version | sed 's/version=//g' | sed 's/"//g')
 case $UNRAID_VERSION in
+  # v7.0.x
+  7.*)
+    OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)
+    ;;
+  # v6.12.xx
+  6.12.[0-9][0-9])
+    OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)
+    ;;
+  6.12.[0-9])
+    OVTPKG=$(ls &source;/open_vm_tools-12.3.5-202402131823.tgz)
+    ;;
+  # v6.11.xx
+  6.11.*)
+    OVTPKG=$(ls &source;/open_vm_tools-12.1.0-202208241430.tgz)
+    ;;
+  # v6.10.xx
+  6.10.3)
+    OVTPKG=$(ls &source;/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)
+    ;;
+  6.10.2)
+    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)
+    ;;
+  6.10.[0-1])
+    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)
+    ;;
+esac
 
-	# v7.0.x
-	7.*  		)	OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)	;;
-
-	# v6.12.xx
-	6.12.[0-9][0-9]	)	OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)	;;
-	6.12.[0-9] 	)	OVTPKG=$(ls &source;/open_vm_tools-12.3.5-202402131823.tgz)	;;
-
-	# v6.11.xx
-	6.11.*		)	OVTPKG=$(ls &source;/open_vm_tools-12.1.0-202208241430.tgz)	;;
-
-	# v6.10.xx
-	6.10.3		)	OVTPKG=$(ls &source;/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)	;;
-	6.10.2		)	OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)	;;
-	6.10.[0-1]	)	OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)	;;
-
-esac 
-
-
-upgradepkg --install-new $OVTPKG
+upgradepkg --install-new "$OVTPKG"
 
 echo -e "Starting VMWare Tools Daemon."
 killall vmtoolsd 2> /dev/null
 rm /var/run/vmtoolsd.pid 2> /dev/null
 /usr/local/bin/vmtoolsd -b /var/run/vmtoolsd.pid
 
-VMTOOLSVERSION=`vmware-toolbox-cmd -v`
-VMTOOLSDPID=`pgrep vmtoolsd`
+VMTOOLSVERSION=$(vmware-toolbox-cmd -v)
+VMTOOLSDPID=$(pgrep vmtoolsd)
 
 echo ""
 echo ""
 echo "-----------------------------------------------------------"
 echo " Plugin &name; is installed."
-echo " Plugin Version:         &version;"
-echo " VMWare Tools Version:   $VMTOOLSVERSION"
-echo " VMTOOLSD Process ID:    $VMTOOLSDPID"
+echo " Plugin Version: &version;"
+echo " VMWare Tools Version: $VMTOOLSVERSION"
+echo " VMTOOLSD Process ID: $VMTOOLSDPID"
 echo "-----------------------------------------------------------"
 echo ""
 echo ""
+  </INLINE>
+</FILE>
 
-</INLINE>
-  </FILE>
- 
- 
- <!-- The 'remove' script. -->
- 
-  <FILE Run="/bin/bash" Method="remove">
-    <INLINE>
+<!-- The 'remove' script. -->
+<FILE Run="/bin/bash" Method="remove">
+  <INLINE>
 echo -e "Stopping VMWare Tools Daemon."
-VMTOOLSVERSION=`vmware-toolbox-cmd -v`
+VMTOOLSVERSION=$(vmware-toolbox-cmd -v)
 killall vmtoolsd 2> /dev/null
 
-for file in &source;/open_vm_tools*; do 
-    if [ -f "$file" ]; then 
-        removepkg "$file" 
-    fi 
+for file in &source;/open_vm_tools*; do
+  if [ -f "$file" ]; then
+    removepkg "$file"
+  fi
 done
 
 rm -rf &plugdir;
@@ -179,7 +183,7 @@ echo " &name; has been removed."
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
-</INLINE>
-  </FILE>
+  </INLINE>
+</FILE>
 
 </PLUGIN>
