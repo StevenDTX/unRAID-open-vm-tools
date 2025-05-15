@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name "openVMTools_compiled">
   <!ENTITY author "StevenD">
-  <!ENTITY version "2025.02.28">
+  <!ENTITY version "2025.05.14">
   <!ENTITY source "/boot/config/plugins/&name;/packages">
   <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
   <!ENTITY emhttp "/usr/local/emhttp/plugins/&name;">
@@ -18,6 +18,10 @@
 <CHANGES>
 
 ##&name;
+
+###2025.05.14
+- Tested on 7.1.2
+- VMWare Tools v12.5.2
 
 ###2025.02.28
 - Tested on 7.0.1
@@ -41,6 +45,10 @@ echo ""
 case $UNRAID_VERSION in
   ## 7.0.x
   7.*)
+    OVTNAME=open_vm_tools-12.5.2-202505141922.tgz
+    ;;
+  ## 7.0.x
+  7.0.*)
     OVTNAME=open_vm_tools-12.5.0-202502272018.tgz
     ;;
   ## 6.12.x / 7.0.0 beta
@@ -115,6 +123,10 @@ UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 case $UNRAID_VERSION in
   # v7.0.x
   7.*)
+    OVTPKG=$(ls &source;/open_vm_tools-12.5.2-202505141922.tgz)
+    ;;
+  # v7.0.x
+  7.0.*)
     OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)
     ;;
   # v6.12.xx
