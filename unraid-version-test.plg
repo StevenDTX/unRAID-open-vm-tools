@@ -1,0 +1,169 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE PLUGIN [
+  <!ENTITY name "unraid-version-test">
+  <!ENTITY author "StevenD">
+  <!ENTITY version "2025.06.23">
+  <!ENTITY source "/boot/config/plugins/&name;/packages">
+  <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
+  <!ENTITY emhttp "/usr/local/emhttp/plugins/&name;">
+  <!ENTITY launch "Settings/&name;">
+  <!ENTITY gitURL "https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/master">
+  <!ENTITY repo "&gitURL;/packages">
+  <!ENTITY pluginURL "&gitURL;/&name;.plg">
+  <!ENTITY min "6.10.0">
+  <!ENTITY supportURL "https://forums.unraid.net/topic/187519-plugin-open-vm-tools/">
+]>
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="&min;" support="&supportURL;">
+
+<CHANGES>
+
+##&name;
+
+
+</CHANGES>
+
+
+
+
+<!-- The 'pre-install' script. -->
+<FILE Run="/bin/bash">
+  <INLINE>
+  
+
+UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
+KERNEL=$(uname -r)
+
+echo ""
+echo "unRAID Version: $UNRAID_VERSION"
+echo "Kernel Version: $KERNEL"
+echo ""
+
+case $UNRAID_VERSION in
+  ## 7.1.4+
+  7.*)
+    OVTNAME=open_vm_tools-13.0.0-202506231826.tgz
+    ;;
+  ## 7.1.x
+  7.1.1[0-4])
+    OVTNAME=open_vm_tools-12.5.2-202505141922.tgz
+    ;;
+  ## 7.0.x
+  7.0.*)
+    OVTNAME=open_vm_tools-12.5.0-202502272018.tgz
+    ;;
+  ## 6.12.x / 7.0.0 beta
+  6.12.[0-9][0-9])
+    OVTNAME=open_vm_tools-12.4.5-202409011517.tgz
+    ;;
+  6.12.[0-9])
+    OVTNAME=open_vm_tools-12.3.5-202402131823.tgz
+    ;;
+  ## 6.11.0
+  6.11.*)
+    OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
+    ;;
+  ## 6.10.0
+  6.10.3)
+    OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz
+    ;;
+  6.10.2)
+    OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
+    ;;
+  6.10.[0-1])
+    OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+    ;;
+  # Version not compatible
+  *)
+    echo ""
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    echo "   Sorry, OpenVMTools has not been compiled for your unRAID version."
+    echo ""
+    echo "   If using a version of unRAID prior to v6.10.0, you may need this plugin:"
+    echo "   https://raw.githubusercontent.com/StevenDTX/unRAID-open-vm-tools/refs/heads/master/openVMTools_compiled_prior_to_v6.12.0.plg"
+    echo ""
+    echo "--------------------------------------------------------------------------"
+    echo ""
+    exit 1
+    ;;
+esac
+
+
+echo ""
+echo "-----------------------------------------------------------"
+echo "  "
+echo " OVTNAME: $OVTNAME"
+echo "  "
+echo "-----------------------------------------------------------"
+echo ""
+
+
+  </INLINE>
+</FILE>
+
+<!-- The 'post-install' script -->
+<FILE Run="/bin/bash">
+  <INLINE>
+
+
+UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
+case $UNRAID_VERSION in
+  ## 7.1.4+
+  7.*)
+#    OVTPKG=$(ls &source;/open_vm_tools-13.0.0-202506231826.tgz)
+	OVTPKG=open_vm_tools-13.0.0-202506231826.tgz
+    ;;
+  ## 7.1.x
+  7.1.1[0-4])
+#    OVTPKG=$(ls &source;/open_vm_tools-12.5.2-202505141922.tgz)
+	OVTPKG=open_vm_tools-12.5.2-202505141922.tgz
+    ;;
+  ## 7.0.x
+  7.0.*)
+#    OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)
+	OVTPKG=open_vm_tools-12.5.0-202502272018.tgz
+    ;;
+  # v6.12.xx
+  6.12.[0-9][0-9])
+#    OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)
+	OVTPKG=open_vm_tools-12.4.5-202409011517.tgz
+    ;;
+  6.12.[0-9])
+#    OVTPKG=$(ls &source;/open_vm_tools-12.3.5-202402131823.tgz)
+	OVTPKG=open_vm_tools-12.3.5-202402131823.tgz
+    ;;
+  # v6.11.xx
+  6.11.*)
+#    OVTPKG=$(ls &source;/open_vm_tools-12.1.0-202208241430.tgz)
+	OVTPKG=open_vm_tools-12.1.0-202208241430.tgz
+    ;;
+  # v6.10.xx
+  6.10.3)
+#    OVTPKG=$(ls &source;/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)
+	OVTPKG=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz
+    ;;
+  6.10.2)
+#    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)
+	OVTPKG=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
+    ;;
+  6.10.[0-1])
+#    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)
+	OVTPKG=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+    ;;
+esac
+
+echo ""
+echo ""
+echo "-----------------------------------------------------------"
+echo "  "
+echo " OVTPKG: $OVTPKG"
+echo "  "
+echo "-----------------------------------------------------------"
+echo ""
+  </INLINE>
+</FILE>
+
+
+
+</PLUGIN>
