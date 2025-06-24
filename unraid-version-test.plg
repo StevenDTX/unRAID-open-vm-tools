@@ -44,7 +44,7 @@ case $UNRAID_VERSION in
     OVTNAME=open_vm_tools-13.0.0-202506231826.tgz
     ;;
   ## 7.1.x
-  7.1.1[0-2])
+  7.1.[0-2])
     OVTNAME=open_vm_tools-12.5.2-202505141922.tgz
     ;;
   ## 7.0.x
@@ -115,7 +115,7 @@ case $UNRAID_VERSION in
 	OVTPKG=open_vm_tools-13.0.0-202506231826.tgz
     ;;
   ## 7.1.x
-  7.1.1[0-2])
+  7.1.[0-2])
 #    OVTPKG=$(ls &source;/open_vm_tools-12.5.2-202505141922.tgz)
 	OVTPKG=open_vm_tools-12.5.2-202505141922.tgz
     ;;
