@@ -15,29 +15,27 @@
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="&min;" support="&supportURL;">
 
-<CHANGES>
+  <CHANGES>
+    ##&name;
 
-##&name;
+    ###2025.06.24
+    - Tested on 7.1.4
+    - VMWare Tools v13.0.0
 
-###2025.06.24
-- Tested on 7.1.4
-- VMWare Tools v13.0.0
+    ###2025.05.14
+    - Tested on 7.1.2
+    - VMWare Tools v12.5.2
 
-###2025.05.14
-- Tested on 7.1.2
-- VMWare Tools v12.5.2
+    ###2025.02.28
+    - Tested on 7.0.1
+    - VMWare Tools v12.5.0
+    - Removed support for unRAID versions prior to 6.10.0
+    - New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
+  </CHANGES>
 
-###2025.02.28
-- Tested on 7.0.1
-- VMWare Tools v12.5.0
-- Removed support for unRAID versions prior to 6.10.0
-- New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
-
-</CHANGES>
-
-<!-- The 'pre-install' script. -->
-<FILE Run="/bin/bash">
-  <INLINE>
+  <!-- The 'pre-install' script. -->
+  <FILE Run="/bin/bash">
+    <INLINE>
 UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 KERNEL=$(uname -r)
 
@@ -110,17 +108,17 @@ if [ ! -f "$OVTPKG" ]; then
     exit 1
   fi
 fi
-  </INLINE>
-</FILE>
+    </INLINE>
+  </FILE>
 
-<!-- The dependency files. -->
-<FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
-  <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
-</FILE>
+  <!-- The dependency files. -->
+  <FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
+    <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
+  </FILE>
 
-<!-- The 'post-install' script -->
-<FILE Run="/bin/bash">
-  <INLINE>
+  <!-- The 'post-install' script -->
+  <FILE Run="/bin/bash">
+    <INLINE>
 # fix for older version of libffi
 if [ ! -f /usr/lib64/libffi.so.6 ]; then
   ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
@@ -187,12 +185,12 @@ echo " VMTOOLSD Process ID: $VMTOOLSDPID"
 echo "-----------------------------------------------------------"
 echo ""
 echo ""
-  </INLINE>
-</FILE>
+    </INLINE>
+  </FILE>
 
-<!-- The 'remove' script. -->
-<FILE Run="/bin/bash" Method="remove">
-  <INLINE>
+  <!-- The 'remove' script. -->
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
 echo -e "Stopping VMWare Tools Daemon."
 VMTOOLSVERSION=$(vmware-toolbox-cmd -v)
 killall vmtoolsd 2> /dev/null
@@ -212,7 +210,7 @@ echo " &name; has been removed."
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
-  </INLINE>
-</FILE>
+    </INLINE>
+  </FILE>
 
 </PLUGIN>
