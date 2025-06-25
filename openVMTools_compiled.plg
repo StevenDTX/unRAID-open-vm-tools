@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name "openVMTools_compiled">
   <!ENTITY author "StevenD">
-  <!ENTITY version "2025.06.23">
+  <!ENTITY version "2025.06.24">
   <!ENTITY source "/boot/config/plugins/&name;/packages">
   <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
   <!ENTITY emhttp "/usr/local/emhttp/plugins/&name;">
@@ -15,29 +15,27 @@
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="&min;" support="&supportURL;">
 
-<CHANGES>
+  <CHANGES>
+    ##&name;
 
-##&name;
+    ###2025.06.24
+    - Tested on 7.1.4
+    - VMWare Tools v13.0.0
 
-###2025.06.23
-- Tested on 7.1.4
-- VMWare Tools v13.0.0
+    ###2025.05.14
+    - Tested on 7.1.2
+    - VMWare Tools v12.5.2
 
-###2025.05.14
-- Tested on 7.1.2
-- VMWare Tools v12.5.2
+    ###2025.02.28
+    - Tested on 7.0.1
+    - VMWare Tools v12.5.0
+    - Removed support for unRAID versions prior to 6.10.0
+    - New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
+  </CHANGES>
 
-###2025.02.28
-- Tested on 7.0.1
-- VMWare Tools v12.5.0
-- Removed support for unRAID versions prior to 6.10.0
-- New support thread: https://forums.unraid.net/topic/187519-plugin-open-vm-tools/
-
-</CHANGES>
-
-<!-- The 'pre-install' script. -->
-<FILE Run="/bin/bash">
-  <INLINE>
+  <!-- The 'pre-install' script. -->
+  <FILE Run="/bin/bash">
+    <INLINE>
 UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 KERNEL=$(uname -r)
 
@@ -47,38 +45,39 @@ echo "Kernel Version: $KERNEL"
 echo ""
 
 case $UNRAID_VERSION in
-  ## 7.1.4+
-  7.*)
-    OVTNAME=open_vm_tools-13.0.0-202506231826.tgz
-    ;;
-  ## 7.1.x
-  7.1.1[0-4])
-    OVTNAME=open_vm_tools-12.5.2-202505141922.tgz
-    ;;
   ## 7.0.x
   7.0.*)
     OVTNAME=open_vm_tools-12.5.0-202502272018.tgz
     ;;
-  ## 6.12.x / 7.0.0 beta
-  6.12.[0-9][0-9])
-    OVTNAME=open_vm_tools-12.4.5-202409011517.tgz
+  ## 7.1.x
+  7.1.[0-2])
+    OVTNAME=open_vm_tools-12.5.2-202505141922.tgz
     ;;
-  6.12.[0-9])
-    OVTNAME=open_vm_tools-12.3.5-202402131823.tgz
+  ## 7.1.4+
+  7.*)
+    OVTNAME=open_vm_tools-13.0.0-202506231826.tgz
+    ;;
+
+  ## 6.10.0
+  6.10.[0-1])
+    OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+    ;;
+  6.10.2)
+    OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
+    ;;
+  6.10.3)
+    OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz
     ;;
   ## 6.11.0
   6.11.*)
     OVTNAME=open_vm_tools-12.1.0-202208241430.tgz
     ;;
-  ## 6.10.0
-  6.10.3)
-    OVTNAME=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz
+  ## 6.12.x 
+  6.12.[0-9][0-9])
+    OVTNAME=open_vm_tools-12.4.5-202409011517.tgz
     ;;
-  6.10.2)
-    OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
-    ;;
-  6.10.[0-1])
-    OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+  6.12.[0-9])
+    OVTNAME=open_vm_tools-12.3.5-202402131823.tgz
     ;;
   # Version not compatible
   *)
@@ -109,17 +108,17 @@ if [ ! -f "$OVTPKG" ]; then
     exit 1
   fi
 fi
-  </INLINE>
-</FILE>
+    </INLINE>
+  </FILE>
 
-<!-- The dependency files. -->
-<FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
-  <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
-</FILE>
+  <!-- The dependency files. -->
+  <FILE Name="&source;/libdnet-1.12-x86_64-6cf.txz" Run="upgradepkg --install-new">
+    <URL>&repo;/libdnet-1.12-x86_64-6cf.txz</URL>
+  </FILE>
 
-<!-- The 'post-install' script -->
-<FILE Run="/bin/bash">
-  <INLINE>
+  <!-- The 'post-install' script -->
+  <FILE Run="/bin/bash">
+    <INLINE>
 # fix for older version of libffi
 if [ ! -f /usr/lib64/libffi.so.6 ]; then
   ln -s /usr/lib64/libffi.so.8 /usr/lib64/libffi.so.6
@@ -128,39 +127,41 @@ else
 fi
 
 UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
+
 case $UNRAID_VERSION in
-  ## 7.1.4+
-  7.*)
-    OVTPKG=$(ls &source;/open_vm_tools-13.0.0-202506231826.tgz)
-    ;;
-  ## 7.1.x
-  7.1.1[0-4])
-    OVTPKG=$(ls &source;/open_vm_tools-12.5.2-202505141922.tgz)
-    ;;
   ## 7.0.x
   7.0.*)
     OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)
     ;;
-  # v6.12.xx
-  6.12.[0-9][0-9])
-    OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)
+  ## 7.1.x
+  7.1.[0-2])
+    OVTPKG=$(ls &source;/open_vm_tools-12.5.2-202505141922.tgz)
     ;;
-  6.12.[0-9])
-    OVTPKG=$(ls &source;/open_vm_tools-12.3.5-202402131823.tgz)
+  ## 7.1.4+
+  7.*)
+    OVTPKG=$(ls &source;/open_vm_tools-13.0.0-202506231826.tgz)
+    ;;
+
+  # v6.10.xx
+  6.10.[0-1])
+    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)
+    ;;
+  6.10.2)
+    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)
+    ;;
+  6.10.3)
+    OVTPKG=$(ls &source;/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)
     ;;
   # v6.11.xx
   6.11.*)
     OVTPKG=$(ls &source;/open_vm_tools-12.1.0-202208241430.tgz)
     ;;
-  # v6.10.xx
-  6.10.3)
-    OVTPKG=$(ls &source;/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)
+  6.12.[0-9])
+    OVTPKG=$(ls &source;/open_vm_tools-12.3.5-202402131823.tgz)
     ;;
-  6.10.2)
-    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)
-    ;;
-  6.10.[0-1])
-    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)
+  # v6.12.xx
+  6.12.[0-9][0-9])
+    OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)
     ;;
 esac
 
@@ -184,12 +185,12 @@ echo " VMTOOLSD Process ID: $VMTOOLSDPID"
 echo "-----------------------------------------------------------"
 echo ""
 echo ""
-  </INLINE>
-</FILE>
+    </INLINE>
+  </FILE>
 
-<!-- The 'remove' script. -->
-<FILE Run="/bin/bash" Method="remove">
-  <INLINE>
+  <!-- The 'remove' script. -->
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>
 echo -e "Stopping VMWare Tools Daemon."
 VMTOOLSVERSION=$(vmware-toolbox-cmd -v)
 killall vmtoolsd 2> /dev/null
@@ -209,7 +210,7 @@ echo " &name; has been removed."
 echo " Version: &version;"
 echo "-----------------------------------------------------------"
 echo ""
-  </INLINE>
-</FILE>
+    </INLINE>
+  </FILE>
 
 </PLUGIN>
