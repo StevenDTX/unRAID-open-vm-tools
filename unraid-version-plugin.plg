@@ -15,20 +15,13 @@
 ]>
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="&min;" support="&supportURL;">
 
-<CHANGES>
+  <CHANGES>
+    ##&name;
+  </CHANGES>
 
-##&name;
-
-
-</CHANGES>
-
-
-
-
-<!-- The 'pre-install' script. -->
-<FILE Run="/bin/bash">
-  <INLINE>
-  
+  <!-- The 'pre-install' script. -->
+  <FILE Run="/bin/bash">
+    <INLINE>
 
 UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 KERNEL=$(uname -r)
@@ -39,7 +32,6 @@ echo "Kernel Version: $KERNEL"
 echo ""
 
 case $UNRAID_VERSION in
-
   ## 7.0.x
   7.0.*)
     OVTNAME=open_vm_tools-12.5.0-202502272018.tgz
@@ -51,12 +43,12 @@ case $UNRAID_VERSION in
   ## 7.1.4+
   7.*)
     OVTNAME=open_vm_tools-13.0.0-202506231826.tgz
-    ;;	
-	
+    ;;
+
   ## 6.10.0
   6.10.[0-1])
     OVTNAME=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
-    ;;	
+    ;;
   6.10.2)
     OVTNAME=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
     ;;
@@ -74,7 +66,6 @@ case $UNRAID_VERSION in
   6.12.[0-9])
     OVTNAME=open_vm_tools-12.3.5-202402131823.tgz
     ;;
-
   # Version not compatible
   *)
     echo ""
@@ -92,7 +83,6 @@ case $UNRAID_VERSION in
     ;;
 esac
 
-
 echo ""
 echo "-----------------------------------------------------------"
 echo "  "
@@ -101,61 +91,58 @@ echo "  "
 echo "-----------------------------------------------------------"
 echo ""
 
+    </INLINE>
+  </FILE>
 
-  </INLINE>
-</FILE>
-
-<!-- The 'post-install' script -->
-<FILE Run="/bin/bash">
-  <INLINE>
-
+  <!-- The 'post-install' script -->
+  <FILE Run="/bin/bash">
+    <INLINE>
 
 UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 case $UNRAID_VERSION in
   ## 7.0.x
   7.0.*)
-#    OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)
-	OVTPKG=open_vm_tools-12.5.0-202502272018.tgz
+    # OVTPKG=$(ls &source;/open_vm_tools-12.5.0-202502272018.tgz)
+    OVTPKG=open_vm_tools-12.5.0-202502272018.tgz
     ;;
-	  ## 7.1.x
+  ## 7.1.x
   7.1.[0-2])
-#    OVTPKG=$(ls &source;/open_vm_tools-12.5.2-202505141922.tgz)
-	OVTPKG=open_vm_tools-12.5.2-202505141922.tgz
-    ;;	
+    # OVTPKG=$(ls &source;/open_vm_tools-12.5.2-202505141922.tgz)
+    OVTPKG=open_vm_tools-12.5.2-202505141922.tgz
+    ;;
   ## 7.1.4+
   7.*)
-#    OVTPKG=$(ls &source;/open_vm_tools-13.0.0-202506231826.tgz)
-	OVTPKG=open_vm_tools-13.0.0-202506231826.tgz
+    # OVTPKG=$(ls &source;/open_vm_tools-13.0.0-202506231826.tgz)
+    OVTPKG=open_vm_tools-13.0.0-202506231826.tgz
     ;;
 
   # v6.10.xx
   6.10.[0-1])
-#    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)
-	OVTPKG=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
+    # OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz)
+    OVTPKG=open_vm_tools-12.0.0-5.15.40-Unraid-x86_64-202205171643.tgz
     ;;
   6.10.2)
-#    OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)
-	OVTPKG=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
+    # OVTPKG=$(ls &source;/open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz)
+    OVTPKG=open_vm_tools-12.0.0-5.15.43-Unraid-x86_64-202205292055.tgz
     ;;
   6.10.3)
-#    OVTPKG=$(ls &source;/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)
-	OVTPKG=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz
+    # OVTPKG=$(ls &source;/open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz)
+    OVTPKG=open_vm_tools-12.0.5-5.15.46-Unraid-x86_64-202206141259.tgz
     ;;
   # v6.11.xx
   6.11.*)
-#    OVTPKG=$(ls &source;/open_vm_tools-12.1.0-202208241430.tgz)
-	OVTPKG=open_vm_tools-12.1.0-202208241430.tgz
+    # OVTPKG=$(ls &source;/open_vm_tools-12.1.0-202208241430.tgz)
+    OVTPKG=open_vm_tools-12.1.0-202208241430.tgz
     ;;
   6.12.[0-9])
-#    OVTPKG=$(ls &source;/open_vm_tools-12.3.5-202402131823.tgz)
-	OVTPKG=open_vm_tools-12.3.5-202402131823.tgz
-    ;;	
+    # OVTPKG=$(ls &source;/open_vm_tools-12.3.5-202402131823.tgz)
+    OVTPKG=open_vm_tools-12.3.5-202402131823.tgz
+    ;;
   # v6.12.xx
   6.12.[0-9][0-9])
-#    OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)
-	OVTPKG=open_vm_tools-12.4.5-202409011517.tgz
+    # OVTPKG=$(ls &source;/open_vm_tools-12.4.5-202409011517.tgz)
+    OVTPKG=open_vm_tools-12.4.5-202409011517.tgz
     ;;
-
 esac
 
 echo ""
@@ -166,9 +153,11 @@ echo " OVTPKG: $OVTPKG"
 echo "  "
 echo "-----------------------------------------------------------"
 echo ""
-  </INLINE>
-</FILE>
 
-
+    </INLINE>
+  </FILE>
 
 </PLUGIN>
+```
+
+Let me know if you want the other file (unraid-version-test.plg) formatted as well!
