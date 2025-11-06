@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name "unraid-version-test">
   <!ENTITY author "StevenD">
-  <!ENTITY version "2025.06.23">
+  <!ENTITY version "2025.11.06">
   <!ENTITY source "/boot/config/plugins/&name;/packages">
   <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
   <!ENTITY emhttp "/usr/local/emhttp/plugins/&name;">
@@ -41,7 +41,7 @@ echo ""
 case $UNRAID_VERSION in
   ## 7.1.4+
   7.*)
-    OVTNAME=open_vm_tools-13.0.0-202506231826.tgz
+    OVTNAME=open_vm_tools-13.0.5-202511061330.tgz
     ;;
   ## 7.1.x
   7.1.[0-2])
@@ -111,8 +111,8 @@ UNRAID_VERSION=$(cat /etc/unraid-version | cut -d= -f2 | tr -d \")
 case $UNRAID_VERSION in
   ## 7.1.4+
   7.*)
-#    OVTPKG=$(ls &source;/open_vm_tools-13.0.0-202506231826.tgz)
-	OVTPKG=open_vm_tools-13.0.0-202506231826.tgz
+#    OVTPKG=$(ls &source;/open_vm_tools-13.0.5-202511061330.tgz)
+	OVTPKG=open_vm_tools-13.0.5-202511061330.tgz
     ;;
   ## 7.1.x
   7.1.[0-2])
