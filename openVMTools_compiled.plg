@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name "openVMTools_compiled">
   <!ENTITY author "StevenD">
-  <!ENTITY version "2025.06.24">
+  <!ENTITY version "2025.11.06">
   <!ENTITY source "/boot/config/plugins/&name;/packages">
   <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
   <!ENTITY emhttp "/usr/local/emhttp/plugins/&name;">
@@ -218,3 +218,4 @@ echo ""
   </FILE>
 
 </PLUGIN>
+
