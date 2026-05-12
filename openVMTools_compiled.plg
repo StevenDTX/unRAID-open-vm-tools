@@ -219,24 +219,6 @@ else
     fi
   fi
 
-  # 3. Slackware current mirror (n/ series)
-  if [ -z "$LIBDNET_PKG" ]; then
-    echo "Querying Slackware mirror for libdnet..."
-    SLACK_MIRROR="https://mirrors.slackware.com/slackware/slackware64-current/slackware64/n"
-    LIBDNET_NAME=$(wget -qO- --timeout=15 "$SLACK_MIRROR/" 2>/dev/null \
-        | grep -oP 'libdnet[-a-zA-Z0-9._]+\.txz' \
-        | sort -V | tail -1)
-    if [ -n "$LIBDNET_NAME" ]; then
-      echo "  Found on Slackware: $LIBDNET_NAME"
-      if wget -q --timeout=30 \
-              "$SLACK_MIRROR/$LIBDNET_NAME" -O "$SOURCE/$LIBDNET_NAME" 2>/dev/null; then
-        LIBDNET_PKG="$SOURCE/$LIBDNET_NAME"
-      else
-        rm -f "$SOURCE/$LIBDNET_NAME"
-      fi
-    fi
-  fi
-
   if [ -n "$LIBDNET_PKG" ]; then
     if [ -f "$LIBDNET_PKG" ]; then
       echo "  Installing $(basename $LIBDNET_PKG)..."
